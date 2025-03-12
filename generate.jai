@@ -493,7 +493,7 @@ UNIX_FOOTER :: #string DONE
 
 #if OS == .LINUX {
     // NOTE(Charles): We actually get the same dll dependcy loading issue windows on linux. We don't have the "#if true"
-    // hack because we are natrually in a static if anyway. :LibreSSLWindowsDlls
+    // hack because we are naturally in a static if anyway. :LibreSSLWindowsDlls
     libcrypto :: #library "linux/libcrypto";
     libssl    :: #library "linux/libssl";
     libtls    :: #library "linux/libtls";

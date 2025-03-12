@@ -1,12 +1,10 @@
 // Simple example testing we at least compile and can run some basic functions. 
 
-AT_COMPILE_TIME :: false; // Can be run at compile time also, with some restrictions on windows :LibreSSLWindowsDlls
+AT_COMPILE_TIME :: false; // Can be run at compile time also.
 
 TO_HASH :: "Give a man a fire and he's warm for a day, but set fire to him and he's warm for the rest of his life.";
 
 entry :: (args: [] string) {
-    print("Hello\n");
-
     print("Hashing the data: '%'\n", TO_HASH);
 
     {
@@ -33,7 +31,6 @@ entry :: (args: [] string) {
     }
     print("\n");
 
-    // print("Printing some proedures from each library. On windows, at compile time, the ssl and tls ones will be null:\n");
     print("Printing some proedures from each library:\n");
     {
         print("MD5_Init         == %\n", MD5_Init);
