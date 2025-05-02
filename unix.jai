@@ -12240,7 +12240,7 @@ ERR_pop_to_mark :: () -> s32 #foreign libcrypto;
 
 #if OS == .LINUX {
     // NOTE(Charles): We actually get the same dll dependcy loading issue windows on linux. We don't have the "#if true"
-    // hack because we are natrually in a static if anyway. :LibreSSLWindowsDlls
+    // hack because we are naturally in a static if anyway. :LibreSSLWindowsDlls
     libcrypto :: #library "linux/libcrypto";
     libssl    :: #library "linux/libssl";
     libtls    :: #library "linux/libtls";
@@ -12254,6 +12254,10 @@ ERR_pop_to_mark :: () -> s32 #foreign libcrypto;
         libssl    :: #library "android/arm64/libssl";
         libtls    :: #library "android/arm64/libtls";
     }
+} else #if OS == .MACOS {
+    libcrypto :: #library "macos/libcrypto";
+    libssl    :: #library "macos/libssl";
+    libtls    :: #library "macos/libtls";
 } else {
     #assert false "Unsupported OS";
 }

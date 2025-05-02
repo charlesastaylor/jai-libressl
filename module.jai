@@ -9,7 +9,7 @@
     #load "unix.jai";
 }
 
-#scope_file 
+#scope_file
 
 // System libraries dependences - "link_always" them in case they are not already linked.
 #if OS == .WINDOWS {
