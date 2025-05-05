@@ -3,10 +3,9 @@ AT_COMPILE_TIME :: true;
 // Full source is not distributed, it can be obatined from https://github.com/libressl/portable/
 SOURCE_PATH :: "src/libressl-4.0.0";
 
-// NOTE(Charles): We generate bindings for everything, which is quite a lot of stuff. If you care about reducing this 
+// NOTE(Charles): We generate bindings for everything, which is quite a lot of stuff. If you care about reducing this
 // there are a number of things you could do :LibreSSLReduceBindings.
 
-// @Incomplete: Macos.
 // @Incomplete: On linux we get 2 symlinks for each shared library, just "copy_file" ing these means we end up with multiple copies instead of links. For now I have just manually created the symlinks. We could write some symlink handling code :LibreSSLLinuxBinaryLinks, or maybe just having multiple copies is fine? The binaries aren't big.
 // @Incomplete: Do some visitor thing to fixup type names, eg env_md_ctx_st -> ENV_MD_CTX? :LibreSSLTypeNames
 // @Incomplete: Resolve the issues in DECLARATIONS_TO_OMIT.
@@ -39,6 +38,9 @@ generate :: (args: [] string) -> bool {
 
     if os_target == .WINDOWS  libre_ssl_lookup_versions();
 
+    // Set this to false to only build for your architecture.
+    macos_universal_binaries := true;
+
     if compile {
         if !check_dependencies(os_target) {
             return false;
@@ -51,7 +53,10 @@ generate :: (args: [] string) -> bool {
 
         if os_target == {
             case .MACOS;
-                assert(false, "@Incomplete: I don't have a mac to make sure this works, sorry! - Charles");
+                success := true;
+                success &&= libressl_compile(os_target, CPU, build_shared_libraries = true , debug = compile_debug, clean = compile_clean, macos_universal_binaries);
+                success &&= libressl_compile(os_target, CPU, build_shared_libraries = false, debug = compile_debug, clean = compile_clean, macos_universal_binaries);
+                if !success return false;
 
             case .ANDROID;
                 // Shared libraries are required for compile time execution, but Android can't do compile time so no need
@@ -120,9 +125,14 @@ generate :: (args: [] string) -> bool {
             case .ANDROID;
                 array_add(*libpaths, "android/arm64");
                 cpu = .ARM64;
-                
-            case .LINUX; 
+
+            case .LINUX;
                 array_add(*libpaths, "linux");
+
+            case .MACOS;
+                output_filename = "unix.jai";
+                array_add(*libpaths, "macos");
+                cpu = CPU;
 
             case;
                 assert(false, "@Incomplete: os_target == % is currently unsupported.", os_target);
@@ -169,7 +179,7 @@ generate :: (args: [] string) -> bool {
         array_add(*extra_clang_arguments, "-DOPENSSL_NO_DH");
         array_add(*extra_clang_arguments, "-DOPENSSL_NO_SHA");
         */
-    
+
         // Every type has an annoying type def, eg EVP_PKEY :: evp_pkey_st. In docs, code, you only ever see
         // the caps version so it would be nice to "unwrap" the definitions to use those names, but the below
         // actually does the opposite. We now only have the evp_pkey_st versions... :LibreSSLTypeNames
@@ -202,7 +212,7 @@ get_platform_name :: (os: Operating_System_Tag) -> string {
     return "";
 }
 
-libressl_compile :: (os_target: Operating_System_Tag, cpu_target := CPU, build_shared_libraries := true, debug := false, clean := false) -> bool {
+libressl_compile :: (os_target: Operating_System_Tag, cpu_target := CPU, build_shared_libraries := true, debug := false, clean := false, macos_universal_binaries := true) -> bool {
     // @Incomplete: Copy pdbs from build directory to final during debug builds
 
     shared_or_static := ifx build_shared_libraries  "shared" else "static";
@@ -221,8 +231,16 @@ libressl_compile :: (os_target: Operating_System_Tag, cpu_target := CPU, build_s
         build_dir        = tprint("%_%_build"  , platform_name, arch_lower_case);
         final_binary_dir = tprint("%/%", platform_name, arch_lower_case);
     } else if os_target == .MACOS {
-        assert(false); // Macos will need to do something for it's universal binary shenanigans.
-    } else  {
+        if macos_universal_binaries {
+            install_dir  = tprint("%_%_install", platform_name, shared_or_static);
+            build_dir    = tprint("%_%_build"  , platform_name, shared_or_static);
+        } else {
+            arch_lower_case := to_lower_copy(tprint("%", cpu_target),, temp);
+
+            install_dir  = tprint("%_%_%_install", platform_name, arch_lower_case, shared_or_static);
+            build_dir    = tprint("%_%_%_build"  , platform_name, arch_lower_case, shared_or_static);
+        }
+    } else {
         // Put the static and shared pass in separate build dirs so recompilation works.
         install_dir      = tprint("%_%_install", platform_name, shared_or_static);
         build_dir        = tprint("%_%_build"  , platform_name, shared_or_static);
@@ -283,6 +301,22 @@ libressl_compile :: (os_target: Operating_System_Tag, cpu_target := CPU, build_s
         tprint("-DCMAKE_PREFIX_PATH=%",    install_dir),
     );
 
+    if os_target == .MACOS {
+        #if OS == .MACOS {
+            POSIX :: #import "POSIX";
+            POSIX.setenv("MACOSX_DEPLOYMENT_TARGET", "11.0", 1);
+
+            if macos_universal_binaries {
+                array_add(*config_command,
+                    "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64",
+                    "-DENABLE_ASM=OFF",
+                );
+            }
+        } else {
+            assert(false);
+        }
+    }
+
     // LibreSSL cmake options
     array_add(*config_command,
         "-DLIBRESSL_APPS=OFF",
@@ -293,7 +327,7 @@ libressl_compile :: (os_target: Operating_System_Tag, cpu_target := CPU, build_s
         // "-DENABLE_ASM=OFF",
         // "-DENABLE_EXTRATESTS=ON",
         // "-DENABLE_NC=ON",
-        // "-DOPENSSLDIR=<dirname>", 
+        // "-DOPENSSLDIR=<dirname>",
     );
 
     if os_target == .WINDOWS {
@@ -308,14 +342,14 @@ libressl_compile :: (os_target: Operating_System_Tag, cpu_target := CPU, build_s
     if os_target == .WINDOWS {
         array_add(*config_command, tprint("-DCMAKE_CONFIGURATION_TYPES=%", build_type)); // ?
     }
-    
+
     if os_target == .ANDROID {
         // NOTE(Charles): I tried complining from linux and it compiles fine, but the bindings seem to think everything
         // is in libcrypto for some reason :shrug:.
         #if OS != .WINDOWS  log("WARNING: Compiling Android has only been tested from windows, but you are compiling from %. Good luck!", OS);
-        
+
         #import "Toolchains/Android";
-            
+
         ndk_paths           := get_ndk_paths();
         toolchain_file_path := tprint("%/build/cmake/android.toolchain.cmake", ndk_paths.root);
         if !file_exists(toolchain_file_path) {
@@ -450,7 +484,7 @@ check_dependencies :: (os_target: Operating_System_Tag) -> bool {
         log_error("Cmake not found in your path, this is required to compile.");
         return false;
     }
-        
+
     if os_target == .WINDOWS {
         // If cmake is in the path, I'm pretty sure ninja will be, but yolo.
         result := run_command("ninja", "--version", capture_and_return_output = true);
@@ -468,7 +502,7 @@ WINDOWS_FOOTER :: #string DONE
     FILE    :: void;
     time_t  :: s64;
     tm      :: struct {};
-    
+
 // @Hack: Well what the heck... Putting the library declarations inside a static if fixes the :LibreSSLWindowsDlls
 // issue somehow...
 #if true {
@@ -507,6 +541,10 @@ UNIX_FOOTER :: #string DONE
         libssl    :: #library "android/arm64/libssl";
         libtls    :: #library "android/arm64/libtls";
     }
+} else #if OS == .MACOS {
+    libcrypto :: #library "macos/libcrypto";
+    libssl    :: #library "macos/libssl";
+    libtls    :: #library "macos/libtls";
 } else {
     #assert false "Unsupported OS";
 }
@@ -544,7 +582,7 @@ DONE
 
 // NOTE(Charles): Windows dll dependencies and versioned names.
 // Ok, so when building for windows the libs are named just tls.lib, crypto.lib, ssl.lib wheras the dlls are versioned,
-// eg crypto-55.dll. To support static linking for runtime builds and compile time execution I believe the compiler 
+// eg crypto-55.dll. To support static linking for runtime builds and compile time execution I believe the compiler
 // requires the dll and lib to share the same name.
 //
 // Simply renaming the dlls is no good however because there are interdependencies, namely:
