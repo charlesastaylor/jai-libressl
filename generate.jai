@@ -100,7 +100,7 @@ generate :: (args: [] string) -> bool {
 
         if os_target == {
             case .WINDOWS;
-                array_add(*libpaths, "windows");
+                array_add(*library_search_paths, "windows");
                 array_add(*extra_clang_arguments, "-DWIN32_LEAN_AND_MEAN");
 
                 output_filename = "windows.jai"; // :LibreSSLSeparateWindowsBindings
@@ -116,22 +116,22 @@ generate :: (args: [] string) -> bool {
                         // integer types so we can't just share the same bindings atm, but at least removing the version numbers here
                         // means if we update the version of the library then not all the bindings change.
 
-                        found, basename := split_from_left(it.name, #char "_");
+                        found, basename := split_from_left(it.identifier, #char "_");
                         assert(found);
-                        it.name = tprint("lib%", basename);
+                        it.identifier = tprint("lib%", basename);
                     }
                 };
 
             case .ANDROID;
-                array_add(*libpaths, "android/arm64");
+                array_add(*library_search_paths, "android/arm64");
                 cpu = .ARM64;
 
             case .LINUX;
-                array_add(*libpaths, "linux");
+                array_add(*library_search_paths, "linux");
 
             case .MACOS;
                 output_filename = "unix.jai";
-                array_add(*libpaths, "macos");
+                array_add(*library_search_paths, "macos");
                 cpu = CPU;
 
             case;
@@ -146,13 +146,13 @@ generate :: (args: [] string) -> bool {
         if os_target == .WINDOWS {
             // ssl depends on crypto, tls depends on crypto and ssl. We have to give the libraries in this order so that
             // Bindings_Generator can load them.
-            array_add(*libnames, tprint("crypto-%", libressl_libraries[0].version)); // We could just visit the files in directory, but we already have the versions for other reasons so just use them.
-            array_add(*libnames, tprint("ssl-%"   , libressl_libraries[1].version));
-            array_add(*libnames, tprint("tls-%"   , libressl_libraries[2].version));
+            array_add(*libraries, .{ filename = tprint("crypto-%", libressl_libraries[0].version) }); // We could just visit the files in directory, but we already have the versions for other reasons so just use them.
+            array_add(*libraries, .{ filename = tprint("ssl-%"   , libressl_libraries[1].version) });
+            array_add(*libraries, .{ filename = tprint("tls-%"   , libressl_libraries[2].version) });
         } else {
-            array_add(*libnames, "libcrypto");
-            array_add(*libnames, "libssl");
-            array_add(*libnames, "libtls");
+            array_add(*libraries, .{ filename = "libcrypto" });
+            array_add(*libraries, .{ filename = "libssl" });
+            array_add(*libraries, .{ filename = "libtls" });
         }
 
         // Just a selection of headers that seem to pick up most things. Maybe it would be better to just add everything in openssl/ ?
