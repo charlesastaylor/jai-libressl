@@ -4,3 +4,5 @@ src
 *_shared_install
 *_static_build
 *_static_install
+android_*_build
+android_*_install

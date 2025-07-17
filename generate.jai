@@ -1,7 +1,7 @@
 AT_COMPILE_TIME :: true;
 
 // Full source is not distributed, it can be obatined from https://github.com/libressl/portable/
-SOURCE_PATH :: "src/libressl-4.0.0";
+SOURCE_PATH :: "src/libressl-4.1.0";
 
 // NOTE(Charles): We generate bindings for everything, which is quite a lot of stuff. If you care about reducing this
 // there are a number of things you could do :LibreSSLReduceBindings.

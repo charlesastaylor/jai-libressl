@@ -1,7 +1,7 @@
 //
 // This file was auto-generated using the following command:
 //
-// jai generate.jai -
+// jai generate.jai
 //
 
 
@@ -47,9 +47,9 @@ TLS_CRL_REASON_AA_COMPROMISE :: 10;
 TLS_MAX_SESSION_ID_LENGTH :: 32;
 TLS_TICKET_KEY_SIZE :: 48;
 
-LIBRESSL_VERSION_NUMBER :: 0x4000000f;
+LIBRESSL_VERSION_NUMBER :: 0x4010000f;
 
-LIBRESSL_VERSION_TEXT :: "LibreSSL 4.0.0";
+LIBRESSL_VERSION_TEXT :: "LibreSSL 4.1.0";
 
 OPENSSL_VERSION_NUMBER :: 0x20000000;
 OPENSSL_VERSION_TEXT :: LIBRESSL_VERSION_TEXT;
@@ -169,6 +169,7 @@ OPENSSL_INIT_ENGINE_AFALG :: _OPENSSL_INIT_FLAG_NOOP;
 OPENSSL_INIT_reserved_internal :: _OPENSSL_INIT_FLAG_NOOP;
 OPENSSL_INIT_ATFORK :: _OPENSSL_INIT_FLAG_NOOP;
 OPENSSL_INIT_ENGINE_ALL_BUILTIN :: _OPENSSL_INIT_FLAG_NOOP;
+OPENSSL_INIT_NO_ATEXIT :: _OPENSSL_INIT_FLAG_NOOP;
 
 CRYPTO_CPU_CAPS_ACCELERATED_AES :: 0x00000001;
 
@@ -5010,8 +5011,6 @@ DSA_FLAG_FIPS_METHOD :: 0x0400;
 
 DSA_FLAG_NON_FIPS_ALLOW :: 0x0400;
 
-DSS_prime_checks :: 64;
-
 EVP_PKEY_CTRL_DSA_PARAMGEN_BITS :: EVP_PKEY_ALG_CTRL + 1;
 EVP_PKEY_CTRL_DSA_PARAMGEN_Q_BITS :: EVP_PKEY_ALG_CTRL + 2;
 EVP_PKEY_CTRL_DSA_PARAMGEN_MD :: EVP_PKEY_ALG_CTRL + 3;
@@ -6047,22 +6046,22 @@ PEM_R_UNSUPPORTED_KEY_COMPONENTS :: 126;
 
 SSL_SESSION_ASN1_VERSION :: 0x0001;
 
-SSL_TXT_KRB5_DES_64_CBC_SHA :: SSL3_TXT_KRB5_DES_64_CBC_SHA;
-SSL_TXT_KRB5_DES_192_CBC3_SHA :: SSL3_TXT_KRB5_DES_192_CBC3_SHA;
 SSL_TXT_KRB5_RC4_128_SHA :: SSL3_TXT_KRB5_RC4_128_SHA;
 SSL_TXT_KRB5_IDEA_128_CBC_SHA :: SSL3_TXT_KRB5_IDEA_128_CBC_SHA;
-SSL_TXT_KRB5_DES_64_CBC_MD5 :: SSL3_TXT_KRB5_DES_64_CBC_MD5;
-SSL_TXT_KRB5_DES_192_CBC3_MD5 :: SSL3_TXT_KRB5_DES_192_CBC3_MD5;
 SSL_TXT_KRB5_RC4_128_MD5 :: SSL3_TXT_KRB5_RC4_128_MD5;
 SSL_TXT_KRB5_IDEA_128_CBC_MD5 :: SSL3_TXT_KRB5_IDEA_128_CBC_MD5;
 
-SSL_TXT_KRB5_DES_40_CBC_SHA :: SSL3_TXT_KRB5_DES_40_CBC_SHA;
 SSL_TXT_KRB5_RC2_40_CBC_SHA :: SSL3_TXT_KRB5_RC2_40_CBC_SHA;
 SSL_TXT_KRB5_RC4_40_SHA :: SSL3_TXT_KRB5_RC4_40_SHA;
-SSL_TXT_KRB5_DES_40_CBC_MD5 :: SSL3_TXT_KRB5_DES_40_CBC_MD5;
 SSL_TXT_KRB5_RC2_40_CBC_MD5 :: SSL3_TXT_KRB5_RC2_40_CBC_MD5;
 SSL_TXT_KRB5_RC4_40_MD5 :: SSL3_TXT_KRB5_RC4_40_MD5;
 
+SSL_TXT_KRB5_DES_40_CBC_SHA :: SSL3_TXT_KRB5_DES_40_CBC_SHA;
+SSL_TXT_KRB5_DES_40_CBC_MD5 :: SSL3_TXT_KRB5_DES_40_CBC_MD5;
+SSL_TXT_KRB5_DES_64_CBC_SHA :: SSL3_TXT_KRB5_DES_64_CBC_SHA;
+SSL_TXT_KRB5_DES_64_CBC_MD5 :: SSL3_TXT_KRB5_DES_64_CBC_MD5;
+SSL_TXT_KRB5_DES_192_CBC3_SHA :: SSL3_TXT_KRB5_DES_192_CBC3_SHA;
+SSL_TXT_KRB5_DES_192_CBC3_MD5 :: SSL3_TXT_KRB5_DES_192_CBC3_MD5;
 SSL_MAX_KRB5_PRINCIPAL_LENGTH :: 256;
 
 SSL_MAX_SSL_SESSION_ID_LENGTH :: 32;
@@ -6182,6 +6181,10 @@ SSL_OP_NO_TICKET :: 0x00004000;
 SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION :: 0x00010000;
 
 SSL_OP_NO_CLIENT_RENEGOTIATION :: 0x00020000;
+
+SSL_OP_NO_RENEGOTIATION :: 0x00040000;
+
+SSL_OP_ALLOW_CLIENT_RENEGOTIATION :: 0x00080000;
 
 SSL_OP_SINGLE_DH_USE :: 0x00100000;
 
@@ -6971,13 +6974,12 @@ TLS_MD_CLIENT_FINISH_CONST :: "client finished";
 TLS_MD_CLIENT_FINISH_CONST_SIZE :: 15;
 TLS_MD_SERVER_FINISH_CONST :: "server finished";
 TLS_MD_SERVER_FINISH_CONST_SIZE :: 15;
-TLS_MD_SERVER_WRITE_KEY_CONST :: "server write key";
-TLS_MD_SERVER_WRITE_KEY_CONST_SIZE :: 16;
 TLS_MD_KEY_EXPANSION_CONST :: "key expansion";
 TLS_MD_KEY_EXPANSION_CONST_SIZE :: 13;
 TLS_MD_CLIENT_WRITE_KEY_CONST :: "client write key";
 TLS_MD_CLIENT_WRITE_KEY_CONST_SIZE :: 16;
-
+TLS_MD_SERVER_WRITE_KEY_CONST :: "server write key";
+TLS_MD_SERVER_WRITE_KEY_CONST_SIZE :: 16;
 TLS_MD_IV_BLOCK_CONST :: "IV block";
 TLS_MD_IV_BLOCK_CONST_SIZE :: 8;
 TLS_MD_MASTER_SECRET_CONST :: "master secret";
@@ -7734,7 +7736,10 @@ SSL_R_SSL_SESSION_ID_CONTEXT_TOO_LONG :: 273;
 SSL_R_SSL_SESSION_ID_HAS_BAD_LENGTH :: 303;
 SSL_R_SSL_SESSION_ID_IS_DIFFERENT :: 231;
 SSL_R_SSL_SESSION_ID_TOO_LONG :: 408;
+SSL_R_TLSV13_ALERT_MISSING_EXTENSION :: 1109;
+SSL_R_TLSV13_ALERT_CERTIFICATE_REQUIRED :: 1116;
 SSL_R_TLSV1_ALERT_ACCESS_DENIED :: 1049;
+SSL_R_TLSV1_ALERT_NO_APPLICATION_PROTOCOL :: 1120;
 SSL_R_TLSV1_ALERT_DECODE_ERROR :: 1050;
 SSL_R_TLSV1_ALERT_DECRYPTION_FAILED :: 1021;
 SSL_R_TLSV1_ALERT_DECRYPT_ERROR :: 1051;
@@ -7746,6 +7751,7 @@ SSL_R_TLSV1_ALERT_NO_RENEGOTIATION :: 1100;
 SSL_R_TLSV1_ALERT_PROTOCOL_VERSION :: 1070;
 SSL_R_TLSV1_ALERT_RECORD_OVERFLOW :: 1022;
 SSL_R_TLSV1_ALERT_UNKNOWN_CA :: 1048;
+SSL_R_TLSV1_ALERT_UNKNOWN_PSK_IDENTITY :: 1115;
 SSL_R_TLSV1_ALERT_USER_CANCELLED :: 1090;
 SSL_R_TLSV1_BAD_CERTIFICATE_HASH_VALUE :: 1114;
 SSL_R_TLSV1_BAD_CERTIFICATE_STATUS_RESPONSE :: 1113;
@@ -7759,7 +7765,6 @@ SSL_R_TLS_ILLEGAL_EXPORTER_LABEL :: 367;
 SSL_R_TLS_INVALID_ECPOINTFORMAT_LIST :: 157;
 SSL_R_TLS_PEER_DID_NOT_RESPOND_WITH_CERTIFICATE_LIST :: 233;
 SSL_R_TLS_RSA_ENCRYPTED_VALUE_LENGTH_IS_WRONG :: 234;
-SSL_R_TRIED_TO_USE_UNSUPPORTED_CIPHER :: 235;
 SSL_R_UNABLE_TO_DECODE_DH_CERTS :: 236;
 SSL_R_UNABLE_TO_DECODE_ECDH_CERTS :: 313;
 SSL_R_UNABLE_TO_EXTRACT_PUBLIC_KEY :: 237;
@@ -8027,6 +8032,7 @@ tls_close :: (_ctx: *tls) -> s32 #foreign libtls;
 tls_peer_cert_provided :: (_ctx: *tls) -> s32 #foreign libtls;
 tls_peer_cert_contains_name :: (_ctx: *tls, _name: *u8) -> s32 #foreign libtls;
 
+tls_peer_cert_common_name :: (_ctx: *tls) -> *u8 #foreign libtls;
 tls_peer_cert_hash :: (_ctx: *tls) -> *u8 #foreign libtls;
 tls_peer_cert_issuer :: (_ctx: *tls) -> *u8 #foreign libtls;
 tls_peer_cert_subject :: (_ctx: *tls) -> *u8 #foreign libtls;
@@ -8312,8 +8318,7 @@ CRYPTO_get_dynlock_create_callback :: (file: *u8, line: s32) -> ((file: *u8, lin
 CRYPTO_get_dynlock_lock_callback :: (mode: s32, l: *CRYPTO_dynlock.CRYPTO_dynlock_value, file: *u8, line: s32) -> ((mode: s32, l: *CRYPTO_dynlock.CRYPTO_dynlock_value, file: *u8, line: s32) -> void #c_call) #foreign libcrypto;
 CRYPTO_get_dynlock_destroy_callback :: (l: *CRYPTO_dynlock.CRYPTO_dynlock_value, file: *u8, line: s32) -> ((l: *CRYPTO_dynlock.CRYPTO_dynlock_value, file: *u8, line: s32) -> void #c_call) #foreign libcrypto;
 
-CRYPTO_set_mem_functions :: (m: #type (unknown0: u64) -> *void #c_call, r: #type (unknown0: *void, unknown1: u64) -> *void #c_call, f: #type (unknown0: *void) -> void #c_call) -> s32 #foreign libcrypto;
-CRYPTO_set_mem_ex_functions :: (m: #type (unknown0: u64, unknown1: *u8, unknown2: s32) -> *void #c_call, r: #type (unknown0: *void, unknown1: u64, unknown2: *u8, unknown3: s32) -> *void #c_call, f: #type (unknown0: *void) -> void #c_call) -> s32 #foreign libcrypto;
+CRYPTO_set_mem_functions :: (m: #type (unknown0: u64, unknown1: *u8, unknown2: s32) -> *void #c_call, r: #type (unknown0: *void, unknown1: u64, unknown2: *u8, unknown3: s32) -> *void #c_call, f: #type (unknown0: *void, unknown1: *u8, unknown2: s32) -> void #c_call) -> s32 #foreign libcrypto;
 
 CRYPTO_malloc :: (num: u64, file: *u8, line: s32) -> *void #foreign libcrypto;
 CRYPTO_strdup :: (str: *u8, file: *u8, line: s32) -> *u8 #foreign libcrypto;
@@ -9772,25 +9777,15 @@ point_conversion_form_t :: enum u32 {
     HYBRID       :: 6;
 }
 
-ec_method_st :: struct {}
-EC_METHOD :: ec_method_st;
 ec_group_st :: struct {}
 EC_GROUP :: ec_group_st;
 ec_point_st :: struct {}
 EC_POINT :: ec_point_st;
 
-EC_GFp_simple_method :: () -> *EC_METHOD #foreign libcrypto;
-EC_GFp_mont_method :: () -> *EC_METHOD #foreign libcrypto;
-
-EC_GROUP_new :: (meth: *EC_METHOD) -> *EC_GROUP #foreign libcrypto;
 EC_GROUP_free :: (group: *EC_GROUP) -> void #foreign libcrypto;
 EC_GROUP_clear_free :: (group: *EC_GROUP) -> void #foreign libcrypto;
 
-EC_GROUP_copy :: (dst: *EC_GROUP, src: *EC_GROUP) -> s32 #foreign libcrypto;
 EC_GROUP_dup :: (src: *EC_GROUP) -> *EC_GROUP #foreign libcrypto;
-
-EC_GROUP_method_of :: (group: *EC_GROUP) -> *EC_METHOD #foreign libcrypto;
-EC_METHOD_get_field_type :: (meth: *EC_METHOD) -> s32 #foreign libcrypto;
 
 EC_GROUP_set_generator :: (group: *EC_GROUP, generator: *EC_POINT, order: *BIGNUM, cofactor: *BIGNUM) -> s32 #foreign libcrypto;
 
@@ -9849,8 +9844,6 @@ EC_POINT_clear_free :: (point: *EC_POINT) -> void #foreign libcrypto;
 EC_POINT_copy :: (dst: *EC_POINT, src: *EC_POINT) -> s32 #foreign libcrypto;
 EC_POINT_dup :: (src: *EC_POINT, group: *EC_GROUP) -> *EC_POINT #foreign libcrypto;
 
-EC_POINT_method_of :: (point: *EC_POINT) -> *EC_METHOD #foreign libcrypto;
-
 EC_POINT_set_to_infinity :: (group: *EC_GROUP, point: *EC_POINT) -> s32 #foreign libcrypto;
 
 EC_POINT_set_affine_coordinates :: (group: *EC_GROUP, p: *EC_POINT, x: *BIGNUM, y: *BIGNUM, ctx: *BN_CTX) -> s32 #foreign libcrypto;
@@ -9858,10 +9851,6 @@ EC_POINT_set_affine_coordinates :: (group: *EC_GROUP, p: *EC_POINT, x: *BIGNUM, 
 EC_POINT_get_affine_coordinates :: (group: *EC_GROUP, p: *EC_POINT, x: *BIGNUM, y: *BIGNUM, ctx: *BN_CTX) -> s32 #foreign libcrypto;
 
 EC_POINT_set_compressed_coordinates :: (group: *EC_GROUP, p: *EC_POINT, x: *BIGNUM, y_bit: s32, ctx: *BN_CTX) -> s32 #foreign libcrypto;
-
-EC_POINT_set_Jprojective_coordinates_GFp :: (group: *EC_GROUP, p: *EC_POINT, x: *BIGNUM, y: *BIGNUM, z: *BIGNUM, ctx: *BN_CTX) -> s32 #foreign libcrypto;
-
-EC_POINT_get_Jprojective_coordinates_GFp :: (group: *EC_GROUP, p: *EC_POINT, x: *BIGNUM, y: *BIGNUM, z: *BIGNUM, ctx: *BN_CTX) -> s32 #foreign libcrypto;
 
 EC_POINT_set_affine_coordinates_GFp :: (group: *EC_GROUP, p: *EC_POINT, x: *BIGNUM, y: *BIGNUM, ctx: *BN_CTX) -> s32 #foreign libcrypto;
 
@@ -9892,14 +9881,7 @@ EC_POINT_is_on_curve :: (group: *EC_GROUP, point: *EC_POINT, ctx: *BN_CTX) -> s3
 EC_POINT_cmp :: (group: *EC_GROUP, a: *EC_POINT, b: *EC_POINT, ctx: *BN_CTX) -> s32 #foreign libcrypto;
 
 EC_POINT_make_affine :: (group: *EC_GROUP, point: *EC_POINT, ctx: *BN_CTX) -> s32 #foreign libcrypto;
-EC_POINTs_make_affine :: (group: *EC_GROUP, num: u64, points: **EC_POINT, ctx: *BN_CTX) -> s32 #foreign libcrypto;
-
-EC_POINTs_mul :: (group: *EC_GROUP, r: *EC_POINT, n: *BIGNUM, num: u64, p: **EC_POINT, m: **BIGNUM, ctx: *BN_CTX) -> s32 #foreign libcrypto;
-
 EC_POINT_mul :: (group: *EC_GROUP, r: *EC_POINT, n: *BIGNUM, q: *EC_POINT, m: *BIGNUM, ctx: *BN_CTX) -> s32 #foreign libcrypto;
-
-EC_GROUP_precompute_mult :: (group: *EC_GROUP, ctx: *BN_CTX) -> s32 #foreign libcrypto;
-EC_GROUP_have_precompute_mult :: (group: *EC_GROUP) -> s32 #foreign libcrypto;
 
 EC_GROUP_get_basis_type :: (unknown0: *EC_GROUP) -> s32 #foreign libcrypto;
 
@@ -10425,7 +10407,6 @@ X509_OBJECT_idx_by_subject :: (h: *stack_st_X509_OBJECT, type: X509_LOOKUP_TYPE,
 X509_OBJECT_retrieve_by_subject :: (h: *stack_st_X509_OBJECT, type: X509_LOOKUP_TYPE, name: *X509_name_st) -> *x509_object_st #foreign libcrypto;
 
 X509_OBJECT_retrieve_match :: (h: *stack_st_X509_OBJECT, x: *x509_object_st) -> *x509_object_st #foreign libcrypto;
-X509_OBJECT_up_ref_count :: (a: *x509_object_st) -> s32 #foreign libcrypto;
 X509_OBJECT_get_type :: (a: *x509_object_st) -> X509_LOOKUP_TYPE #foreign libcrypto;
 X509_OBJECT_get0_X509 :: (xo: *x509_object_st) -> *X509 #foreign libcrypto;
 X509_OBJECT_get0_X509_CRL :: (xo: *x509_object_st) -> *X509_crl_st #foreign libcrypto;
@@ -11279,7 +11260,6 @@ X509_CRL_print_fp :: (bp: *FILE, x: *X509_crl_st) -> s32 #foreign libcrypto;
 X509_REQ_print_fp :: (bp: *FILE, req: *X509_req_st) -> s32 #foreign libcrypto;
 X509_NAME_print_ex_fp :: (fp: *FILE, nm: *X509_name_st, indent: s32, flags: u64) -> s32 #foreign libcrypto;
 
-X509_NAME_print :: (bp: *BIO, name: *X509_name_st, obase: s32) -> s32 #foreign libcrypto;
 X509_NAME_print_ex :: (out: *BIO, nm: *X509_name_st, indent: s32, flags: u64) -> s32 #foreign libcrypto;
 
 X509_print_ex :: (bp: *BIO, x: *X509, nmflag: u64, cflag: u64) -> s32 #foreign libcrypto;
