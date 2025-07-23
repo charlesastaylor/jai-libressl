@@ -4,3 +4,8 @@ src
 *_shared_install
 *_static_build
 *_static_install
+
+*.exe
+*.pdb
+libclang.dll
+libclang.so

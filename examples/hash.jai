@@ -51,7 +51,7 @@ to_hex_string :: (s: string) -> string {
 fh2 :: #bake_arguments formatInt(minimum_digits = 2, base = 16);
 
 
-#import,dir "../../LibreSSL"();
+#import,dir "../../LibreSSL";
 #import "Basic";
     
 #if AT_COMPILE_TIME {

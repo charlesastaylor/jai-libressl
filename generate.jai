@@ -1,4 +1,7 @@
-AT_COMPILE_TIME :: true;
+
+// NOTE(Charles): Generating bindings is _very_ slow at compile time. You may want to set this to false.
+// Remebering to copy the libclang.dll/.so from Bindings_Generator over also.
+AT_COMPILE_TIME :: false;
 
 // Full source is not distributed, it can be obatined from https://github.com/libressl/portable/
 SOURCE_PATH :: "src/libressl-4.0.0";
@@ -119,20 +122,6 @@ generate :: (args: [] string) -> bool {
                     libressl_libraries[2].version, // tls
                 );
 
-                will_print_bindings = () {
-                    for context.generator.libraries {
-                        // Rename the lib identifier to not be versioned. Sadly unix/windows bindings have some minor differences with
-                        // integer types so we can't just share the same bindings atm, but at least removing the version numbers here
-                        // means if we update the version of the library then not all the bindings change.
-
-                        found, basename := split_from_left(it.identifier, #char "_");
-                        assert(found);
-                        it.identifier = tprint("lib%", basename);
-
-                        // @TODO: Can this be cleaned up with the new Bindings_Generator Library changes?
-                    }
-                };
-
             case .ANDROID;
                 array_add(*library_search_paths, "android/arm64");
                 cpu = .ARM64;
@@ -154,12 +143,15 @@ generate :: (args: [] string) -> bool {
         include_path := tprint("%/include", SOURCE_PATH);
         array_add(*include_paths, include_path);
 
+        // ssl depends on crypto, tls depends on crypto and ssl. We have to give the libraries in this order so that
+        // Bindings_Generator can load them.
         if os_target == .WINDOWS {
-            // ssl depends on crypto, tls depends on crypto and ssl. We have to give the libraries in this order so that
-            // Bindings_Generator can load them.
-            array_add(*libraries, .{ filename = tprint("crypto-%", libressl_libraries[0].version) }); // We could just visit the files in directory, but we already have the versions for other reasons so just use them.
-            array_add(*libraries, .{ filename = tprint("ssl-%"   , libressl_libraries[1].version) });
-            array_add(*libraries, .{ filename = tprint("tls-%"   , libressl_libraries[2].version) });
+            // Rename the lib identifier to not be versioned. Sadly unix/windows bindings have some minor differences with
+            // integer types so we can't just share the same bindings atm, but at least removing the version numbers here
+            // means if we update the version of the library then not all the bindings change.
+            array_add(*libraries, .{ filename = tprint("crypto-%", libressl_libraries[0].version), identifier = "libcrypto"}); // We could just visit the files in directory, but we already have the versions for other reasons so just use them.
+            array_add(*libraries, .{ filename = tprint("ssl-%"   , libressl_libraries[1].version), identifier = "libssl"});
+            array_add(*libraries, .{ filename = tprint("tls-%"   , libressl_libraries[2].version), identifier = "libtls"});
         } else {
             array_add(*libraries, .{ filename = "libcrypto" });
             array_add(*libraries, .{ filename = "libssl" });
