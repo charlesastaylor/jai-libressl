@@ -6,11 +6,20 @@ SOURCE_PATH :: "src/libressl-4.0.0";
 // NOTE(Charles): We generate bindings for everything, which is quite a lot of stuff. If you care about reducing this
 // there are a number of things you could do :LibreSSLReduceBindings.
 
+// NOTE(Charles): The binaries we build here for unix systems include debug symbols, even in release. This is also true
+// for modules/freetype-2.12.1, whose generate script I used as a starting point. Is this the right thing?
+// Should we mess with the cmake crap to remove debug info? Modules that use BuildCpp to compile, eg stb_image, won't
+// include debug info in the release versions that ship with the compiler.
+//
+// Actually, I don't think LibreSSL cmake build does this? Maybe it is just a freetype thing. I am messaging Raphael now
+// to let him now.
+
 // @Incomplete: On linux we get 2 symlinks for each shared library, just "copy_file" ing these means we end up with multiple copies instead of links. For now I have just manually created the symlinks. We could write some symlink handling code :LibreSSLLinuxBinaryLinks, or maybe just having multiple copies is fine? The binaries aren't big.
 // @Incomplete: Do some visitor thing to fixup type names, eg env_md_ctx_st -> ENV_MD_CTX? :LibreSSLTypeNames
 // @Incomplete: Resolve the issues in DECLARATIONS_TO_OMIT.
 // @Incomplete: The only differece I can see between unix and windows bindings is the size of some integer paramters. This could potentially be resolves with some type alias? :LibreSSLSeparateWindowsBindings
 // @Incomplete: Some procedures aliased using macros are lost when generating bindings, eg EVP_DigestSignUpdate :: EVP_DigestUpdate. Generate these. :LibreSSLFunctionMacros
+// @Incomplete: Some procedures, eg EVP_PKEY_CTX_set_rsa_keygen_bits, are defined as c macros and we don't generate bindings for them. :LibreSSLFunctionMacros
 
 DECLARATIONS_TO_OMIT :: string.[
     // Procs with problematic syntax for Bindings_Generator
@@ -119,6 +128,8 @@ generate :: (args: [] string) -> bool {
                         found, basename := split_from_left(it.identifier, #char "_");
                         assert(found);
                         it.identifier = tprint("lib%", basename);
+
+                        // @TODO: Can this be cleaned up with the new Bindings_Generator Library changes?
                     }
                 };
 
@@ -160,6 +171,8 @@ generate :: (args: [] string) -> bool {
         array_add(*source_files,  tprint("%/openssl/ssl.h", include_path));
         array_add(*source_files,  tprint("%/openssl/md5.h", include_path));
         array_add(*source_files,  tprint("%/openssl/err.h", include_path));
+
+        array_add(*source_files,  tprint("%/openssl/x509v3.h", include_path));
 
         // :LibreSSLReduceBindings: If just using crypto stuff (eg sha, rsa, etc), then you could just generate bindings
         // against the relevant header and there is a more sane amount of generated bindings. Eg:
@@ -626,4 +639,5 @@ DONE
 // to add the same LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR flag)
 //
 // Umm... Well the second issue listed here was also an issue on Linux but in both cases they can be worked round by
-// having the library delcarations inside a static if... Sooo, this big comment can just be deleted?
+// having the library delcarations inside a static if... Sooo, this big comment can just be deleted? :LibraryDependnciesFixedByStaticIf
+//

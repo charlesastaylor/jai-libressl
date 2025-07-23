@@ -7928,6 +7928,347 @@ ERR_R_INTERNAL_ERROR :: 4|ERR_R_FATAL;
 ERR_R_DISABLED :: 5|ERR_R_FATAL;
 ERR_R_INIT_FAIL :: 6|ERR_R_FATAL;
 
+CONF_MFLAGS_IGNORE_ERRORS :: 0x1;
+CONF_MFLAGS_IGNORE_RETURN_CODES :: 0x2;
+CONF_MFLAGS_SILENT :: 0x4;
+CONF_MFLAGS_NO_DSO :: 0x8;
+CONF_MFLAGS_IGNORE_MISSING_FILE :: 0x10;
+CONF_MFLAGS_DEFAULT_SECTION :: 0x20;
+
+CONF_F_CONF_DUMP_FP :: 104;
+CONF_F_CONF_LOAD :: 100;
+CONF_F_CONF_LOAD_BIO :: 102;
+CONF_F_CONF_LOAD_FP :: 103;
+CONF_F_CONF_MODULES_LOAD :: 116;
+CONF_F_CONF_PARSE_LIST :: 119;
+CONF_F_DEF_LOAD :: 120;
+CONF_F_DEF_LOAD_BIO :: 121;
+CONF_F_MODULE_INIT :: 115;
+CONF_F_MODULE_LOAD_DSO :: 117;
+CONF_F_MODULE_RUN :: 118;
+CONF_F_NCONF_DUMP_BIO :: 105;
+CONF_F_NCONF_DUMP_FP :: 106;
+CONF_F_NCONF_GET_NUMBER :: 107;
+CONF_F_NCONF_GET_NUMBER_E :: 112;
+CONF_F_NCONF_GET_SECTION :: 108;
+CONF_F_NCONF_GET_STRING :: 109;
+CONF_F_NCONF_LOAD :: 113;
+CONF_F_NCONF_LOAD_BIO :: 110;
+CONF_F_NCONF_LOAD_FP :: 114;
+CONF_F_NCONF_NEW :: 111;
+CONF_F_STR_COPY :: 101;
+
+CONF_R_ERROR_LOADING_DSO :: 110;
+CONF_R_LIST_CANNOT_BE_NULL :: 115;
+CONF_R_MISSING_CLOSE_SQUARE_BRACKET :: 100;
+CONF_R_MISSING_EQUAL_SIGN :: 101;
+CONF_R_MISSING_FINISH_FUNCTION :: 111;
+CONF_R_MISSING_INIT_FUNCTION :: 112;
+CONF_R_MODULE_INITIALIZATION_ERROR :: 109;
+CONF_R_NO_CLOSE_BRACE :: 102;
+CONF_R_NO_CONF :: 105;
+CONF_R_NO_CONF_OR_ENVIRONMENT_VARIABLE :: 106;
+CONF_R_NO_SECTION :: 107;
+CONF_R_NO_SUCH_FILE :: 114;
+CONF_R_NO_VALUE :: 108;
+CONF_R_UNABLE_TO_CREATE_NEW_SECTION :: 103;
+CONF_R_UNKNOWN_MODULE_NAME :: 113;
+CONF_R_VARIABLE_EXPANSION_TOO_LONG :: 116;
+CONF_R_VARIABLE_HAS_NO_VALUE :: 104;
+
+CTX_TEST :: 0x1;
+
+X509V3_EXT_DYNAMIC :: 0x1;
+X509V3_EXT_CTX_DEP :: 0x2;
+X509V3_EXT_MULTILINE :: 0x4;
+
+GEN_OTHERNAME :: 0;
+GEN_EMAIL :: 1;
+GEN_DNS :: 2;
+GEN_X400 :: 3;
+GEN_DIRNAME :: 4;
+GEN_EDIPARTY :: 5;
+GEN_URI :: 6;
+GEN_IPADD :: 7;
+GEN_RID :: 8;
+
+CRLDP_ALL_REASONS :: 0x807f;
+
+CRL_REASON_NONE :: -1;
+CRL_REASON_UNSPECIFIED :: 0;
+CRL_REASON_KEY_COMPROMISE :: 1;
+CRL_REASON_CA_COMPROMISE :: 2;
+CRL_REASON_AFFILIATION_CHANGED :: 3;
+CRL_REASON_SUPERSEDED :: 4;
+CRL_REASON_CESSATION_OF_OPERATION :: 5;
+CRL_REASON_CERTIFICATE_HOLD :: 6;
+CRL_REASON_REMOVE_FROM_CRL :: 8;
+CRL_REASON_PRIVILEGE_WITHDRAWN :: 9;
+CRL_REASON_AA_COMPROMISE :: 10;
+
+IDP_PRESENT :: 0x1;
+
+IDP_INVALID :: 0x2;
+
+IDP_ONLYUSER :: 0x4;
+
+IDP_ONLYCA :: 0x8;
+
+IDP_ONLYATTR :: 0x10;
+
+IDP_INDIRECT :: 0x20;
+
+IDP_REASONS :: 0x40;
+
+EXFLAG_BCONS :: 0x0001;
+EXFLAG_KUSAGE :: 0x0002;
+EXFLAG_XKUSAGE :: 0x0004;
+EXFLAG_NSCERT :: 0x0008;
+
+EXFLAG_CA :: 0x0010;
+EXFLAG_SI :: 0x0020;
+EXFLAG_V1 :: 0x0040;
+EXFLAG_INVALID :: 0x0080;
+EXFLAG_SET :: 0x0100;
+EXFLAG_CRITICAL :: 0x0200;
+
+EXFLAG_PROXY :: 0x0400;
+
+EXFLAG_INVALID_POLICY :: 0x0800;
+EXFLAG_FRESHEST :: 0x1000;
+EXFLAG_SS :: 0x2000;
+
+KU_DIGITAL_SIGNATURE :: 0x0080;
+KU_NON_REPUDIATION :: 0x0040;
+KU_KEY_ENCIPHERMENT :: 0x0020;
+KU_DATA_ENCIPHERMENT :: 0x0010;
+KU_KEY_AGREEMENT :: 0x0008;
+KU_KEY_CERT_SIGN :: 0x0004;
+KU_CRL_SIGN :: 0x0002;
+KU_ENCIPHER_ONLY :: 0x0001;
+KU_DECIPHER_ONLY :: 0x8000;
+
+NS_SSL_CLIENT :: 0x80;
+NS_SSL_SERVER :: 0x40;
+NS_SMIME :: 0x20;
+NS_OBJSIGN :: 0x10;
+NS_SSL_CA :: 0x04;
+NS_SMIME_CA :: 0x02;
+NS_OBJSIGN_CA :: 0x01;
+NS_ANY_CA :: NS_SSL_CA|NS_SMIME_CA|NS_OBJSIGN_CA;
+
+XKU_SSL_SERVER :: 0x1;
+XKU_SSL_CLIENT :: 0x2;
+XKU_SMIME :: 0x4;
+XKU_CODE_SIGN :: 0x8;
+XKU_SGC :: 0x10;
+XKU_OCSP_SIGN :: 0x20;
+XKU_TIMESTAMP :: 0x40;
+XKU_DVCS :: 0x80;
+XKU_ANYEKU :: 0x100;
+
+X509_PURPOSE_DYNAMIC :: 0x1;
+X509_PURPOSE_DYNAMIC_NAME :: 0x2;
+
+X509_PURPOSE_SSL_CLIENT :: 1;
+X509_PURPOSE_SSL_SERVER :: 2;
+X509_PURPOSE_NS_SSL_SERVER :: 3;
+X509_PURPOSE_SMIME_SIGN :: 4;
+X509_PURPOSE_SMIME_ENCRYPT :: 5;
+X509_PURPOSE_CRL_SIGN :: 6;
+X509_PURPOSE_ANY :: 7;
+X509_PURPOSE_OCSP_HELPER :: 8;
+X509_PURPOSE_TIMESTAMP_SIGN :: 9;
+
+X509_PURPOSE_MIN :: 1;
+X509_PURPOSE_MAX :: 9;
+
+X509V3_EXT_UNKNOWN_MASK :: 0xf << 16;
+
+X509V3_EXT_DEFAULT :: 0;
+
+X509V3_EXT_ERROR_UNKNOWN :: 1 << 16;
+
+X509V3_EXT_PARSE_UNKNOWN :: 2 << 16;
+
+X509V3_EXT_DUMP_UNKNOWN :: 3 << 16;
+
+X509V3_ADD_OP_MASK :: 0xf;
+X509V3_ADD_DEFAULT :: 0;
+X509V3_ADD_APPEND :: 1;
+X509V3_ADD_REPLACE :: 2;
+X509V3_ADD_REPLACE_EXISTING :: 3;
+X509V3_ADD_KEEP_EXISTING :: 4;
+X509V3_ADD_DELETE :: 5;
+X509V3_ADD_SILENT :: 0x10;
+
+X509_CHECK_FLAG_ALWAYS_CHECK_SUBJECT :: 0x1;
+
+X509_CHECK_FLAG_NO_WILDCARDS :: 0x2;
+
+X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS :: 0x4;
+
+X509_CHECK_FLAG_MULTI_LABEL_WILDCARDS :: 0x8;
+
+X509_CHECK_FLAG_SINGLE_LABEL_SUBDOMAINS :: 0x10;
+
+X509_CHECK_FLAG_NEVER_CHECK_SUBJECT :: 0x20;
+
+_X509_CHECK_FLAG_DOT_SUBDOMAINS :: 0x8000;
+
+ASIdOrRange_id :: 0;
+ASIdOrRange_range :: 1;
+
+ASIdentifierChoice_inherit :: 0;
+ASIdentifierChoice_asIdsOrRanges :: 1;
+
+IPAddressOrRange_addressPrefix :: 0;
+IPAddressOrRange_addressRange :: 1;
+
+IPAddressChoice_inherit :: 0;
+IPAddressChoice_addressesOrRanges :: 1;
+
+V3_ASID_ASNUM :: 0;
+V3_ASID_RDI :: 1;
+
+IANA_AFI_IPV4 :: 1;
+IANA_AFI_IPV6 :: 2;
+
+X509V3_F_A2I_GENERAL_NAME :: 164;
+X509V3_F_ASIDENTIFIERCHOICE_CANONIZE :: 161;
+X509V3_F_ASIDENTIFIERCHOICE_IS_CANONICAL :: 162;
+X509V3_F_COPY_EMAIL :: 122;
+X509V3_F_COPY_ISSUER :: 123;
+X509V3_F_DO_DIRNAME :: 144;
+X509V3_F_DO_EXT_CONF :: 124;
+X509V3_F_DO_EXT_I2D :: 135;
+X509V3_F_DO_EXT_NCONF :: 151;
+X509V3_F_DO_I2V_NAME_CONSTRAINTS :: 148;
+X509V3_F_GNAMES_FROM_SECTNAME :: 156;
+X509V3_F_HEX_TO_STRING :: 111;
+X509V3_F_I2S_ASN1_ENUMERATED :: 121;
+X509V3_F_I2S_ASN1_IA5STRING :: 149;
+X509V3_F_I2S_ASN1_INTEGER :: 120;
+X509V3_F_I2V_AUTHORITY_INFO_ACCESS :: 138;
+X509V3_F_NOTICE_SECTION :: 132;
+X509V3_F_NREF_NOS :: 133;
+X509V3_F_POLICY_SECTION :: 131;
+X509V3_F_PROCESS_PCI_VALUE :: 150;
+X509V3_F_R2I_CERTPOL :: 130;
+X509V3_F_R2I_PCI :: 155;
+X509V3_F_S2I_ASN1_IA5STRING :: 100;
+X509V3_F_S2I_ASN1_INTEGER :: 108;
+X509V3_F_S2I_ASN1_OCTET_STRING :: 112;
+X509V3_F_S2I_ASN1_SKEY_ID :: 114;
+X509V3_F_S2I_SKEY_ID :: 115;
+X509V3_F_SET_DIST_POINT_NAME :: 158;
+X509V3_F_STRING_TO_HEX :: 113;
+X509V3_F_SXNET_ADD_ID_ASC :: 125;
+X509V3_F_SXNET_ADD_ID_INTEGER :: 126;
+X509V3_F_SXNET_ADD_ID_ULONG :: 127;
+X509V3_F_SXNET_GET_ID_ASC :: 128;
+X509V3_F_SXNET_GET_ID_ULONG :: 129;
+X509V3_F_V2I_ASIDENTIFIERS :: 163;
+X509V3_F_V2I_ASN1_BIT_STRING :: 101;
+X509V3_F_V2I_AUTHORITY_INFO_ACCESS :: 139;
+X509V3_F_V2I_AUTHORITY_KEYID :: 119;
+X509V3_F_V2I_BASIC_CONSTRAINTS :: 102;
+X509V3_F_V2I_CRLD :: 134;
+X509V3_F_V2I_EXTENDED_KEY_USAGE :: 103;
+X509V3_F_V2I_GENERAL_NAMES :: 118;
+X509V3_F_V2I_GENERAL_NAME_EX :: 117;
+X509V3_F_V2I_IDP :: 157;
+X509V3_F_V2I_IPADDRBLOCKS :: 159;
+X509V3_F_V2I_ISSUER_ALT :: 153;
+X509V3_F_V2I_NAME_CONSTRAINTS :: 147;
+X509V3_F_V2I_POLICY_CONSTRAINTS :: 146;
+X509V3_F_V2I_POLICY_MAPPINGS :: 145;
+X509V3_F_V2I_SUBJECT_ALT :: 154;
+X509V3_F_V3_ADDR_VALIDATE_PATH_INTERNAL :: 160;
+X509V3_F_V3_GENERIC_EXTENSION :: 116;
+X509V3_F_X509V3_ADD1_I2D :: 140;
+X509V3_F_X509V3_ADD_VALUE :: 105;
+X509V3_F_X509V3_EXT_ADD :: 104;
+X509V3_F_X509V3_EXT_ADD_ALIAS :: 106;
+X509V3_F_X509V3_EXT_CONF :: 107;
+X509V3_F_X509V3_EXT_I2D :: 136;
+X509V3_F_X509V3_EXT_NCONF :: 152;
+X509V3_F_X509V3_GET_SECTION :: 142;
+X509V3_F_X509V3_GET_STRING :: 143;
+X509V3_F_X509V3_GET_VALUE_BOOL :: 110;
+X509V3_F_X509V3_PARSE_LIST :: 109;
+X509V3_F_X509_PURPOSE_ADD :: 137;
+X509V3_F_X509_PURPOSE_SET :: 141;
+
+X509V3_R_BAD_IP_ADDRESS :: 118;
+X509V3_R_BAD_OBJECT :: 119;
+X509V3_R_BN_DEC2BN_ERROR :: 100;
+X509V3_R_BN_TO_ASN1_INTEGER_ERROR :: 101;
+X509V3_R_DIRNAME_ERROR :: 149;
+X509V3_R_DISTPOINT_ALREADY_SET :: 160;
+X509V3_R_DUPLICATE_ZONE_ID :: 133;
+X509V3_R_ERROR_CONVERTING_ZONE :: 131;
+X509V3_R_ERROR_CREATING_EXTENSION :: 144;
+X509V3_R_ERROR_IN_EXTENSION :: 128;
+X509V3_R_EXPECTED_A_SECTION_NAME :: 137;
+X509V3_R_EXTENSION_EXISTS :: 145;
+X509V3_R_EXTENSION_NAME_ERROR :: 115;
+X509V3_R_EXTENSION_NOT_FOUND :: 102;
+X509V3_R_EXTENSION_SETTING_NOT_SUPPORTED :: 103;
+X509V3_R_EXTENSION_VALUE_ERROR :: 116;
+X509V3_R_ILLEGAL_EMPTY_EXTENSION :: 151;
+X509V3_R_ILLEGAL_HEX_DIGIT :: 113;
+X509V3_R_INCORRECT_POLICY_SYNTAX_TAG :: 152;
+X509V3_R_INVALID_MULTIPLE_RDNS :: 161;
+X509V3_R_INVALID_ASNUMBER :: 162;
+X509V3_R_INVALID_ASRANGE :: 163;
+X509V3_R_INVALID_BOOLEAN_STRING :: 104;
+X509V3_R_INVALID_EXTENSION_STRING :: 105;
+X509V3_R_INVALID_INHERITANCE :: 165;
+X509V3_R_INVALID_IPADDRESS :: 166;
+X509V3_R_INVALID_NAME :: 106;
+X509V3_R_INVALID_NULL_ARGUMENT :: 107;
+X509V3_R_INVALID_NULL_NAME :: 108;
+X509V3_R_INVALID_NULL_VALUE :: 109;
+X509V3_R_INVALID_NUMBER :: 140;
+X509V3_R_INVALID_NUMBERS :: 141;
+X509V3_R_INVALID_OBJECT_IDENTIFIER :: 110;
+X509V3_R_INVALID_OPTION :: 138;
+X509V3_R_INVALID_POLICY_IDENTIFIER :: 134;
+X509V3_R_INVALID_PROXY_POLICY_SETTING :: 153;
+X509V3_R_INVALID_PURPOSE :: 146;
+X509V3_R_INVALID_SAFI :: 164;
+X509V3_R_INVALID_SECTION :: 135;
+X509V3_R_INVALID_SYNTAX :: 143;
+X509V3_R_ISSUER_DECODE_ERROR :: 126;
+X509V3_R_MISSING_VALUE :: 124;
+X509V3_R_NEED_ORGANIZATION_AND_NUMBERS :: 142;
+X509V3_R_NO_CONFIG_DATABASE :: 136;
+X509V3_R_NO_ISSUER_CERTIFICATE :: 121;
+X509V3_R_NO_ISSUER_DETAILS :: 127;
+X509V3_R_NO_POLICY_IDENTIFIER :: 139;
+X509V3_R_NO_PROXY_CERT_POLICY_LANGUAGE_DEFINED :: 154;
+X509V3_R_NO_PUBLIC_KEY :: 114;
+X509V3_R_NO_SUBJECT_DETAILS :: 125;
+X509V3_R_ODD_NUMBER_OF_DIGITS :: 112;
+X509V3_R_OPERATION_NOT_DEFINED :: 148;
+X509V3_R_OTHERNAME_ERROR :: 147;
+X509V3_R_POLICY_LANGUAGE_ALREADY_DEFINED :: 155;
+X509V3_R_POLICY_PATH_LENGTH :: 156;
+X509V3_R_POLICY_PATH_LENGTH_ALREADY_DEFINED :: 157;
+X509V3_R_POLICY_SYNTAX_NOT_CURRENTLY_SUPPORTED :: 158;
+X509V3_R_POLICY_WHEN_PROXY_LANGUAGE_REQUIRES_NO_POLICY :: 159;
+X509V3_R_SECTION_NOT_FOUND :: 150;
+X509V3_R_UNABLE_TO_GET_ISSUER_DETAILS :: 122;
+X509V3_R_UNABLE_TO_GET_ISSUER_KEYID :: 123;
+X509V3_R_UNKNOWN_BIT_STRING_ARGUMENT :: 111;
+X509V3_R_UNKNOWN_EXTENSION :: 129;
+X509V3_R_UNKNOWN_EXTENSION_NAME :: 130;
+X509V3_R_UNKNOWN_OPTION :: 120;
+X509V3_R_UNSUPPORTED_OPTION :: 117;
+X509V3_R_UNSUPPORTED_TYPE :: 167;
+X509V3_R_USER_TOO_LONG :: 132;
+
 tls :: struct {}
 tls_config :: struct {}
 
@@ -8157,9 +8498,7 @@ X509_VERIFY_PARAM_st :: struct {}
 pkcs8_priv_key_info_st :: struct {}
 PKCS8_PRIV_KEY_INFO :: pkcs8_priv_key_info_st;
 
-v3_ext_ctx :: struct {}
 X509V3_CTX :: v3_ext_ctx;
-conf_st :: struct {}
 CONF :: conf_st;
 
 ui_st :: struct {}
@@ -8174,13 +8513,9 @@ SSL :: ssl_st;
 ssl_ctx_st :: struct {}
 SSL_CTX :: ssl_ctx_st;
 
-AUTHORITY_KEYID_st :: struct {}
 AUTHORITY_KEYID :: AUTHORITY_KEYID_st;
-DIST_POINT_st :: struct {}
 DIST_POINT :: DIST_POINT_st;
-ISSUING_DIST_POINT_st :: struct {}
 ISSUING_DIST_POINT :: ISSUING_DIST_POINT_st;
-NAME_CONSTRAINTS_st :: struct {}
 NAME_CONSTRAINTS :: NAME_CONSTRAINTS_st;
 
 CRYPTO_EX_DATA :: crypto_ex_data_st;
@@ -12231,6 +12566,690 @@ ERR_get_next_error_library :: () -> s32 #foreign libcrypto;
 
 ERR_set_mark :: () -> s32 #foreign libcrypto;
 ERR_pop_to_mark :: () -> s32 #foreign libcrypto;
+
+CONF_VALUE :: struct {
+    section: *u8;
+    name:    *u8;
+    value:   *u8;
+}
+
+stack_st_CONF_VALUE :: struct {}
+lhash_st_CONF_VALUE :: struct {}
+
+conf_method_st :: struct {}
+CONF_METHOD :: conf_method_st;
+
+conf_imodule_st :: struct {}
+CONF_IMODULE :: conf_imodule_st;
+conf_module_st :: struct {}
+CONF_MODULE :: conf_module_st;
+
+stack_st_CONF_MODULE :: struct {}
+stack_st_CONF_IMODULE :: struct {}
+
+conf_init_func :: #type (md: *CONF_IMODULE, cnf: *CONF) -> s32 #c_call;
+conf_finish_func :: #type (md: *CONF_IMODULE) -> void #c_call;
+
+OPENSSL_config :: (config_name: *u8) -> void #foreign libcrypto;
+OPENSSL_no_config :: () -> void #foreign libcrypto;
+
+conf_st :: struct {
+    meth: *CONF_METHOD;
+    data: *lhash_st_CONF_VALUE;
+}
+
+NCONF_new :: (meth: *CONF_METHOD) -> *CONF #foreign libcrypto;
+NCONF_free :: (conf: *CONF) -> void #foreign libcrypto;
+
+NCONF_load :: (conf: *CONF, file: *u8, eline: *s32) -> s32 #foreign libcrypto;
+NCONF_load_bio :: (conf: *CONF, bp: *BIO, eline: *s32) -> s32 #foreign libcrypto;
+NCONF_get_section :: (conf: *CONF, section: *u8) -> *stack_st_CONF_VALUE #foreign libcrypto;
+NCONF_get_string :: (conf: *CONF, group: *u8, name: *u8) -> *u8 #foreign libcrypto;
+NCONF_get_number_e :: (conf: *CONF, group: *u8, name: *u8, result: *s32) -> s32 #foreign libcrypto;
+
+CONF_modules_load :: (cnf: *CONF, appname: *u8, flags: u32) -> s32 #foreign libcrypto;
+
+CONF_modules_load_file :: (filename: *u8, appname: *u8, flags: u32) -> s32 #foreign libcrypto;
+
+CONF_modules_unload :: (all: s32) -> void #foreign libcrypto;
+CONF_modules_finish :: () -> void #foreign libcrypto;
+CONF_modules_free :: () -> void #foreign libcrypto;
+
+CONF_get1_default_config_file :: () -> *u8 #foreign libcrypto;
+
+ERR_load_CONF_strings :: () -> void #foreign libcrypto;
+
+X509V3_EXT_NEW :: #type () -> *void #c_call;
+X509V3_EXT_FREE :: #type (unknown0: *void) -> void #c_call;
+X509V3_EXT_D2I :: #type (unknown0: *void, unknown1: **u8, unknown2: s32) -> *void #c_call;
+X509V3_EXT_I2D :: #type (unknown0: *void, unknown1: **u8) -> s32 #c_call;
+
+X509V3_EXT_I2V :: #type (method: *v3_ext_method, ext: *void, extlist: *stack_st_CONF_VALUE) -> *stack_st_CONF_VALUE #c_call;
+
+X509V3_EXT_V2I :: #type (method: *v3_ext_method, ctx: *v3_ext_ctx, values: *stack_st_CONF_VALUE) -> *void #c_call;
+
+X509V3_EXT_I2S :: #type (method: *v3_ext_method, ext: *void) -> *u8 #c_call;
+X509V3_EXT_S2I :: #type (method: *v3_ext_method, ctx: *v3_ext_ctx, str: *u8) -> *void #c_call;
+
+X509V3_EXT_I2R :: #type (method: *v3_ext_method, ext: *void, out: *BIO, indent: s32) -> s32 #c_call;
+
+X509V3_EXT_R2I :: #type (method: *v3_ext_method, ctx: *v3_ext_ctx, str: *u8) -> *void #c_call;
+
+v3_ext_method :: struct {
+    ext_nid:   s32;
+    ext_flags: s32;
+
+    it:        *ASN1_ITEM_EXP;
+
+    ext_new:   X509V3_EXT_NEW;
+    ext_free:  X509V3_EXT_FREE;
+    d2i:       X509V3_EXT_D2I;
+    i2d:       X509V3_EXT_I2D;
+
+    i2s:       X509V3_EXT_I2S;
+    s2i:       X509V3_EXT_S2I;
+
+    i2v:       X509V3_EXT_I2V;
+    v2i:       X509V3_EXT_V2I;
+
+    i2r:       X509V3_EXT_I2R;
+    r2i:       X509V3_EXT_R2I;
+
+    usr_data:  *void;
+}
+
+v3_ext_ctx :: struct {
+    flags:        s32;
+    issuer_cert:  *X509;
+    subject_cert: *X509;
+    subject_req:  *X509_req_st;
+    crl:          *X509_crl_st;
+    db:           *void;
+}
+
+X509V3_EXT_METHOD :: v3_ext_method;
+
+stack_st_X509V3_EXT_METHOD :: struct {}
+
+ENUMERATED_NAMES :: BIT_STRING_BITNAME;
+
+BASIC_CONSTRAINTS_st :: struct {
+    ca:      s32;
+    pathlen: *ASN1_INTEGER;
+}
+
+BASIC_CONSTRAINTS :: BASIC_CONSTRAINTS_st;
+
+PKEY_USAGE_PERIOD_st :: struct {
+    notBefore: *ASN1_GENERALIZEDTIME;
+    notAfter:  *ASN1_GENERALIZEDTIME;
+}
+
+PKEY_USAGE_PERIOD :: PKEY_USAGE_PERIOD_st;
+
+otherName_st :: struct {
+    type_id: *ASN1_OBJECT;
+    value:   *ASN1_TYPE;
+}
+
+OTHERNAME :: otherName_st;
+
+EDIPartyName_st :: struct {
+    nameAssigner: *ASN1_STRING;
+    partyName:    *ASN1_STRING;
+}
+
+EDIPARTYNAME :: EDIPartyName_st;
+
+GENERAL_NAME_st :: struct {
+    type: s32;
+    d:    union {
+        ptr:                       *u8;
+        otherName:                 *OTHERNAME;
+        rfc822Name:                *ASN1_IA5STRING;
+        dNSName:                   *ASN1_IA5STRING;
+        x400Address:               *ASN1_STRING;
+        directoryName:             *X509_name_st;
+        ediPartyName:              *EDIPARTYNAME;
+        uniformResourceIdentifier: *ASN1_IA5STRING;
+        iPAddress:                 *ASN1_OCTET_STRING;
+        registeredID:              *ASN1_OBJECT;
+
+        ip:                        *ASN1_OCTET_STRING;
+        dirn:                      *X509_name_st;
+        ia5:                       *ASN1_IA5STRING;
+        rid:                       *ASN1_OBJECT;
+    };
+}
+
+GENERAL_NAME :: GENERAL_NAME_st;
+
+ACCESS_DESCRIPTION_st :: struct {
+    method:   *ASN1_OBJECT;
+    location: *GENERAL_NAME;
+}
+
+ACCESS_DESCRIPTION :: ACCESS_DESCRIPTION_st;
+
+stack_st_ACCESS_DESCRIPTION :: struct {}
+AUTHORITY_INFO_ACCESS :: stack_st_ACCESS_DESCRIPTION;
+
+EXTENDED_KEY_USAGE :: stack_st_ASN1_OBJECT;
+
+stack_st_GENERAL_NAME :: struct {}
+
+GENERAL_NAMES :: stack_st_GENERAL_NAME;
+stack_st_GENERAL_NAMES :: struct {}
+
+DIST_POINT_NAME_st :: struct {
+    type:   s32;
+    name:   union {
+        fullname:     *GENERAL_NAMES;
+        relativename: *stack_st_X509_NAME_ENTRY;
+    };
+
+    dpname: *X509_name_st;
+}
+
+DIST_POINT_NAME :: DIST_POINT_NAME_st;
+
+DIST_POINT_st :: struct {
+    distpoint:  *DIST_POINT_NAME;
+    reasons:    *ASN1_BIT_STRING;
+    CRLissuer:  *GENERAL_NAMES;
+    dp_reasons: s32;
+}
+
+stack_st_DIST_POINT :: struct {}
+CRL_DIST_POINTS :: stack_st_DIST_POINT;
+
+AUTHORITY_KEYID_st :: struct {
+    keyid:  *ASN1_OCTET_STRING;
+    issuer: *GENERAL_NAMES;
+    serial: *ASN1_INTEGER;
+}
+
+NOTICEREF_st :: struct {
+    organization: *ASN1_STRING;
+    noticenos:    *stack_st_ASN1_INTEGER;
+}
+
+NOTICEREF :: NOTICEREF_st;
+
+USERNOTICE_st :: struct {
+    noticeref: *NOTICEREF;
+    exptext:   *ASN1_STRING;
+}
+
+USERNOTICE :: USERNOTICE_st;
+
+POLICYQUALINFO_st :: struct {
+    pqualid: *ASN1_OBJECT;
+    d:       union {
+        cpsuri:     *ASN1_IA5STRING;
+        usernotice: *USERNOTICE;
+        other:      *ASN1_TYPE;
+    };
+}
+
+POLICYQUALINFO :: POLICYQUALINFO_st;
+
+stack_st_POLICYQUALINFO :: struct {}
+
+POLICYINFO_st :: struct {
+    policyid:   *ASN1_OBJECT;
+    qualifiers: *stack_st_POLICYQUALINFO;
+}
+
+POLICYINFO :: POLICYINFO_st;
+
+stack_st_POLICYINFO :: struct {}
+CERTIFICATEPOLICIES :: stack_st_POLICYINFO;
+
+POLICY_MAPPING_st :: struct {
+    issuerDomainPolicy:  *ASN1_OBJECT;
+    subjectDomainPolicy: *ASN1_OBJECT;
+}
+
+POLICY_MAPPING :: POLICY_MAPPING_st;
+
+stack_st_POLICY_MAPPING :: struct {}
+
+POLICY_MAPPINGS :: stack_st_POLICY_MAPPING;
+
+GENERAL_SUBTREE_st :: struct {
+    base:    *GENERAL_NAME;
+    minimum: *ASN1_INTEGER;
+    maximum: *ASN1_INTEGER;
+}
+
+GENERAL_SUBTREE :: GENERAL_SUBTREE_st;
+
+stack_st_GENERAL_SUBTREE :: struct {}
+
+NAME_CONSTRAINTS_st :: struct {
+    permittedSubtrees: *stack_st_GENERAL_SUBTREE;
+    excludedSubtrees:  *stack_st_GENERAL_SUBTREE;
+}
+
+POLICY_CONSTRAINTS_st :: struct {
+    requireExplicitPolicy: *ASN1_INTEGER;
+    inhibitPolicyMapping:  *ASN1_INTEGER;
+}
+
+POLICY_CONSTRAINTS :: POLICY_CONSTRAINTS_st;
+
+ISSUING_DIST_POINT_st :: struct {
+    distpoint:       *DIST_POINT_NAME;
+    onlyuser:        s32;
+    onlyCA:          s32;
+    onlysomereasons: *ASN1_BIT_STRING;
+    indirectCRL:     s32;
+    onlyattr:        s32;
+}
+
+x509_purpose_st :: struct {}
+
+stack_st_X509_PURPOSE :: struct {}
+
+BASIC_CONSTRAINTS_new :: () -> *BASIC_CONSTRAINTS #foreign libcrypto;
+BASIC_CONSTRAINTS_free :: (a: *BASIC_CONSTRAINTS) -> void #foreign libcrypto;
+d2i_BASIC_CONSTRAINTS :: (a: **BASIC_CONSTRAINTS, in: **u8, len: s32) -> *BASIC_CONSTRAINTS #foreign libcrypto;
+i2d_BASIC_CONSTRAINTS :: (a: *BASIC_CONSTRAINTS, out: **u8) -> s32 #foreign libcrypto;
+BASIC_CONSTRAINTS_it: ASN1_ITEM #elsewhere libcrypto;
+
+AUTHORITY_KEYID_new :: () -> *AUTHORITY_KEYID #foreign libcrypto;
+AUTHORITY_KEYID_free :: (a: *AUTHORITY_KEYID) -> void #foreign libcrypto;
+d2i_AUTHORITY_KEYID :: (a: **AUTHORITY_KEYID, in: **u8, len: s32) -> *AUTHORITY_KEYID #foreign libcrypto;
+i2d_AUTHORITY_KEYID :: (a: *AUTHORITY_KEYID, out: **u8) -> s32 #foreign libcrypto;
+AUTHORITY_KEYID_it: ASN1_ITEM #elsewhere libcrypto;
+
+PKEY_USAGE_PERIOD_new :: () -> *PKEY_USAGE_PERIOD #foreign libcrypto;
+PKEY_USAGE_PERIOD_free :: (a: *PKEY_USAGE_PERIOD) -> void #foreign libcrypto;
+d2i_PKEY_USAGE_PERIOD :: (a: **PKEY_USAGE_PERIOD, in: **u8, len: s32) -> *PKEY_USAGE_PERIOD #foreign libcrypto;
+i2d_PKEY_USAGE_PERIOD :: (a: *PKEY_USAGE_PERIOD, out: **u8) -> s32 #foreign libcrypto;
+PKEY_USAGE_PERIOD_it: ASN1_ITEM #elsewhere libcrypto;
+
+GENERAL_NAME_new :: () -> *GENERAL_NAME #foreign libcrypto;
+GENERAL_NAME_free :: (a: *GENERAL_NAME) -> void #foreign libcrypto;
+d2i_GENERAL_NAME :: (a: **GENERAL_NAME, in: **u8, len: s32) -> *GENERAL_NAME #foreign libcrypto;
+i2d_GENERAL_NAME :: (a: *GENERAL_NAME, out: **u8) -> s32 #foreign libcrypto;
+GENERAL_NAME_it: ASN1_ITEM #elsewhere libcrypto;
+GENERAL_NAME_dup :: (a: *GENERAL_NAME) -> *GENERAL_NAME #foreign libcrypto;
+GENERAL_NAME_cmp :: (a: *GENERAL_NAME, b: *GENERAL_NAME) -> s32 #foreign libcrypto;
+
+v2i_ASN1_BIT_STRING :: (method: *X509V3_EXT_METHOD, ctx: *X509V3_CTX, nval: *stack_st_CONF_VALUE) -> *ASN1_BIT_STRING #foreign libcrypto;
+
+i2v_ASN1_BIT_STRING :: (method: *X509V3_EXT_METHOD, bits: *ASN1_BIT_STRING, extlist: *stack_st_CONF_VALUE) -> *stack_st_CONF_VALUE #foreign libcrypto;
+
+i2v_GENERAL_NAME :: (method: *X509V3_EXT_METHOD, gen: *GENERAL_NAME, ret: *stack_st_CONF_VALUE) -> *stack_st_CONF_VALUE #foreign libcrypto;
+GENERAL_NAME_print :: (out: *BIO, gen: *GENERAL_NAME) -> s32 #foreign libcrypto;
+
+GENERAL_NAMES_new :: () -> *GENERAL_NAMES #foreign libcrypto;
+GENERAL_NAMES_free :: (a: *GENERAL_NAMES) -> void #foreign libcrypto;
+d2i_GENERAL_NAMES :: (a: **GENERAL_NAMES, in: **u8, len: s32) -> *GENERAL_NAMES #foreign libcrypto;
+i2d_GENERAL_NAMES :: (a: *GENERAL_NAMES, out: **u8) -> s32 #foreign libcrypto;
+GENERAL_NAMES_it: ASN1_ITEM #elsewhere libcrypto;
+
+i2v_GENERAL_NAMES :: (method: *X509V3_EXT_METHOD, gen: *GENERAL_NAMES, extlist: *stack_st_CONF_VALUE) -> *stack_st_CONF_VALUE #foreign libcrypto;
+
+v2i_GENERAL_NAMES :: (method: *X509V3_EXT_METHOD, ctx: *X509V3_CTX, nval: *stack_st_CONF_VALUE) -> *GENERAL_NAMES #foreign libcrypto;
+
+OTHERNAME_new :: () -> *OTHERNAME #foreign libcrypto;
+OTHERNAME_free :: (a: *OTHERNAME) -> void #foreign libcrypto;
+d2i_OTHERNAME :: (a: **OTHERNAME, in: **u8, len: s32) -> *OTHERNAME #foreign libcrypto;
+i2d_OTHERNAME :: (a: *OTHERNAME, out: **u8) -> s32 #foreign libcrypto;
+OTHERNAME_it: ASN1_ITEM #elsewhere libcrypto;
+EDIPARTYNAME_new :: () -> *EDIPARTYNAME #foreign libcrypto;
+EDIPARTYNAME_free :: (a: *EDIPARTYNAME) -> void #foreign libcrypto;
+d2i_EDIPARTYNAME :: (a: **EDIPARTYNAME, in: **u8, len: s32) -> *EDIPARTYNAME #foreign libcrypto;
+i2d_EDIPARTYNAME :: (a: *EDIPARTYNAME, out: **u8) -> s32 #foreign libcrypto;
+EDIPARTYNAME_it: ASN1_ITEM #elsewhere libcrypto;
+OTHERNAME_cmp :: (a: *OTHERNAME, b: *OTHERNAME) -> s32 #foreign libcrypto;
+GENERAL_NAME_set0_value :: (a: *GENERAL_NAME, type: s32, value: *void) -> void #foreign libcrypto;
+GENERAL_NAME_get0_value :: (a: *GENERAL_NAME, ptype: *s32) -> *void #foreign libcrypto;
+GENERAL_NAME_set0_othername :: (gen: *GENERAL_NAME, oid: *ASN1_OBJECT, value: *ASN1_TYPE) -> s32 #foreign libcrypto;
+
+GENERAL_NAME_get0_otherName :: (gen: *GENERAL_NAME, poid: **ASN1_OBJECT, pvalue: **ASN1_TYPE) -> s32 #foreign libcrypto;
+
+i2s_ASN1_OCTET_STRING :: (method: *X509V3_EXT_METHOD, ia5: *ASN1_OCTET_STRING) -> *u8 #foreign libcrypto;
+
+s2i_ASN1_OCTET_STRING :: (method: *X509V3_EXT_METHOD, ctx: *X509V3_CTX, str: *u8) -> *ASN1_OCTET_STRING #foreign libcrypto;
+
+EXTENDED_KEY_USAGE_new :: () -> *EXTENDED_KEY_USAGE #foreign libcrypto;
+EXTENDED_KEY_USAGE_free :: (a: *EXTENDED_KEY_USAGE) -> void #foreign libcrypto;
+d2i_EXTENDED_KEY_USAGE :: (a: **EXTENDED_KEY_USAGE, in: **u8, len: s32) -> *EXTENDED_KEY_USAGE #foreign libcrypto;
+i2d_EXTENDED_KEY_USAGE :: (a: *EXTENDED_KEY_USAGE, out: **u8) -> s32 #foreign libcrypto;
+EXTENDED_KEY_USAGE_it: ASN1_ITEM #elsewhere libcrypto;
+i2a_ACCESS_DESCRIPTION :: (bp: *BIO, a: *ACCESS_DESCRIPTION) -> s32 #foreign libcrypto;
+
+CERTIFICATEPOLICIES_new :: () -> *CERTIFICATEPOLICIES #foreign libcrypto;
+CERTIFICATEPOLICIES_free :: (a: *CERTIFICATEPOLICIES) -> void #foreign libcrypto;
+d2i_CERTIFICATEPOLICIES :: (a: **CERTIFICATEPOLICIES, in: **u8, len: s32) -> *CERTIFICATEPOLICIES #foreign libcrypto;
+i2d_CERTIFICATEPOLICIES :: (a: *CERTIFICATEPOLICIES, out: **u8) -> s32 #foreign libcrypto;
+CERTIFICATEPOLICIES_it: ASN1_ITEM #elsewhere libcrypto;
+POLICYINFO_new :: () -> *POLICYINFO #foreign libcrypto;
+POLICYINFO_free :: (a: *POLICYINFO) -> void #foreign libcrypto;
+d2i_POLICYINFO :: (a: **POLICYINFO, in: **u8, len: s32) -> *POLICYINFO #foreign libcrypto;
+i2d_POLICYINFO :: (a: *POLICYINFO, out: **u8) -> s32 #foreign libcrypto;
+POLICYINFO_it: ASN1_ITEM #elsewhere libcrypto;
+POLICYQUALINFO_new :: () -> *POLICYQUALINFO #foreign libcrypto;
+POLICYQUALINFO_free :: (a: *POLICYQUALINFO) -> void #foreign libcrypto;
+d2i_POLICYQUALINFO :: (a: **POLICYQUALINFO, in: **u8, len: s32) -> *POLICYQUALINFO #foreign libcrypto;
+i2d_POLICYQUALINFO :: (a: *POLICYQUALINFO, out: **u8) -> s32 #foreign libcrypto;
+POLICYQUALINFO_it: ASN1_ITEM #elsewhere libcrypto;
+USERNOTICE_new :: () -> *USERNOTICE #foreign libcrypto;
+USERNOTICE_free :: (a: *USERNOTICE) -> void #foreign libcrypto;
+d2i_USERNOTICE :: (a: **USERNOTICE, in: **u8, len: s32) -> *USERNOTICE #foreign libcrypto;
+i2d_USERNOTICE :: (a: *USERNOTICE, out: **u8) -> s32 #foreign libcrypto;
+USERNOTICE_it: ASN1_ITEM #elsewhere libcrypto;
+NOTICEREF_new :: () -> *NOTICEREF #foreign libcrypto;
+NOTICEREF_free :: (a: *NOTICEREF) -> void #foreign libcrypto;
+d2i_NOTICEREF :: (a: **NOTICEREF, in: **u8, len: s32) -> *NOTICEREF #foreign libcrypto;
+i2d_NOTICEREF :: (a: *NOTICEREF, out: **u8) -> s32 #foreign libcrypto;
+NOTICEREF_it: ASN1_ITEM #elsewhere libcrypto;
+
+CRL_DIST_POINTS_new :: () -> *CRL_DIST_POINTS #foreign libcrypto;
+CRL_DIST_POINTS_free :: (a: *CRL_DIST_POINTS) -> void #foreign libcrypto;
+d2i_CRL_DIST_POINTS :: (a: **CRL_DIST_POINTS, in: **u8, len: s32) -> *CRL_DIST_POINTS #foreign libcrypto;
+i2d_CRL_DIST_POINTS :: (a: *CRL_DIST_POINTS, out: **u8) -> s32 #foreign libcrypto;
+CRL_DIST_POINTS_it: ASN1_ITEM #elsewhere libcrypto;
+DIST_POINT_new :: () -> *DIST_POINT #foreign libcrypto;
+DIST_POINT_free :: (a: *DIST_POINT) -> void #foreign libcrypto;
+d2i_DIST_POINT :: (a: **DIST_POINT, in: **u8, len: s32) -> *DIST_POINT #foreign libcrypto;
+i2d_DIST_POINT :: (a: *DIST_POINT, out: **u8) -> s32 #foreign libcrypto;
+DIST_POINT_it: ASN1_ITEM #elsewhere libcrypto;
+DIST_POINT_NAME_new :: () -> *DIST_POINT_NAME #foreign libcrypto;
+DIST_POINT_NAME_free :: (a: *DIST_POINT_NAME) -> void #foreign libcrypto;
+d2i_DIST_POINT_NAME :: (a: **DIST_POINT_NAME, in: **u8, len: s32) -> *DIST_POINT_NAME #foreign libcrypto;
+i2d_DIST_POINT_NAME :: (a: *DIST_POINT_NAME, out: **u8) -> s32 #foreign libcrypto;
+DIST_POINT_NAME_it: ASN1_ITEM #elsewhere libcrypto;
+ISSUING_DIST_POINT_new :: () -> *ISSUING_DIST_POINT #foreign libcrypto;
+ISSUING_DIST_POINT_free :: (a: *ISSUING_DIST_POINT) -> void #foreign libcrypto;
+d2i_ISSUING_DIST_POINT :: (a: **ISSUING_DIST_POINT, in: **u8, len: s32) -> *ISSUING_DIST_POINT #foreign libcrypto;
+i2d_ISSUING_DIST_POINT :: (a: *ISSUING_DIST_POINT, out: **u8) -> s32 #foreign libcrypto;
+ISSUING_DIST_POINT_it: ASN1_ITEM #elsewhere libcrypto;
+
+DIST_POINT_set_dpname :: (dpn: *DIST_POINT_NAME, iname: *X509_name_st) -> s32 #foreign libcrypto;
+
+NAME_CONSTRAINTS_check :: (x: *X509, nc: *NAME_CONSTRAINTS) -> s32 #foreign libcrypto;
+
+ACCESS_DESCRIPTION_new :: () -> *ACCESS_DESCRIPTION #foreign libcrypto;
+ACCESS_DESCRIPTION_free :: (a: *ACCESS_DESCRIPTION) -> void #foreign libcrypto;
+d2i_ACCESS_DESCRIPTION :: (a: **ACCESS_DESCRIPTION, in: **u8, len: s32) -> *ACCESS_DESCRIPTION #foreign libcrypto;
+i2d_ACCESS_DESCRIPTION :: (a: *ACCESS_DESCRIPTION, out: **u8) -> s32 #foreign libcrypto;
+ACCESS_DESCRIPTION_it: ASN1_ITEM #elsewhere libcrypto;
+AUTHORITY_INFO_ACCESS_new :: () -> *AUTHORITY_INFO_ACCESS #foreign libcrypto;
+AUTHORITY_INFO_ACCESS_free :: (a: *AUTHORITY_INFO_ACCESS) -> void #foreign libcrypto;
+d2i_AUTHORITY_INFO_ACCESS :: (a: **AUTHORITY_INFO_ACCESS, in: **u8, len: s32) -> *AUTHORITY_INFO_ACCESS #foreign libcrypto;
+i2d_AUTHORITY_INFO_ACCESS :: (a: *AUTHORITY_INFO_ACCESS, out: **u8) -> s32 #foreign libcrypto;
+AUTHORITY_INFO_ACCESS_it: ASN1_ITEM #elsewhere libcrypto;
+
+POLICY_MAPPING_it: ASN1_ITEM #elsewhere libcrypto;
+POLICY_MAPPING_new :: () -> *POLICY_MAPPING #foreign libcrypto;
+POLICY_MAPPING_free :: (a: *POLICY_MAPPING) -> void #foreign libcrypto;
+POLICY_MAPPINGS_it: ASN1_ITEM #elsewhere libcrypto;
+
+GENERAL_SUBTREE_it: ASN1_ITEM #elsewhere libcrypto;
+GENERAL_SUBTREE_new :: () -> *GENERAL_SUBTREE #foreign libcrypto;
+GENERAL_SUBTREE_free :: (a: *GENERAL_SUBTREE) -> void #foreign libcrypto;
+
+NAME_CONSTRAINTS_it: ASN1_ITEM #elsewhere libcrypto;
+NAME_CONSTRAINTS_new :: () -> *NAME_CONSTRAINTS #foreign libcrypto;
+NAME_CONSTRAINTS_free :: (a: *NAME_CONSTRAINTS) -> void #foreign libcrypto;
+
+POLICY_CONSTRAINTS_new :: () -> *POLICY_CONSTRAINTS #foreign libcrypto;
+POLICY_CONSTRAINTS_free :: (a: *POLICY_CONSTRAINTS) -> void #foreign libcrypto;
+POLICY_CONSTRAINTS_it: ASN1_ITEM #elsewhere libcrypto;
+
+a2i_GENERAL_NAME :: (out: *GENERAL_NAME, method: *X509V3_EXT_METHOD, ctx: *X509V3_CTX, gen_type: s32, value: *u8, is_nc: s32) -> *GENERAL_NAME #foreign libcrypto;
+
+v2i_GENERAL_NAME :: (method: *X509V3_EXT_METHOD, ctx: *X509V3_CTX, cnf: *CONF_VALUE) -> *GENERAL_NAME #foreign libcrypto;
+
+v2i_GENERAL_NAME_ex :: (out: *GENERAL_NAME, method: *X509V3_EXT_METHOD, ctx: *X509V3_CTX, cnf: *CONF_VALUE, is_nc: s32) -> *GENERAL_NAME #foreign libcrypto;
+
+X509V3_conf_free :: (val: *CONF_VALUE) -> void #foreign libcrypto;
+
+X509V3_EXT_nconf_nid :: (conf: *CONF, ctx: *X509V3_CTX, ext_nid: s32, value: *u8) -> *X509_extension_st #foreign libcrypto;
+
+X509V3_EXT_nconf :: (conf: *CONF, ctx: *X509V3_CTX, name: *u8, value: *u8) -> *X509_extension_st #foreign libcrypto;
+
+X509V3_EXT_add_nconf_sk :: (conf: *CONF, ctx: *X509V3_CTX, section: *u8, sk: **stack_st_X509_EXTENSION) -> s32 #foreign libcrypto;
+
+X509V3_EXT_add_nconf :: (conf: *CONF, ctx: *X509V3_CTX, section: *u8, cert: *X509) -> s32 #foreign libcrypto;
+
+X509V3_EXT_REQ_add_nconf :: (conf: *CONF, ctx: *X509V3_CTX, section: *u8, req: *X509_req_st) -> s32 #foreign libcrypto;
+
+X509V3_EXT_CRL_add_nconf :: (conf: *CONF, ctx: *X509V3_CTX, section: *u8, crl: *X509_crl_st) -> s32 #foreign libcrypto;
+
+X509V3_EXT_conf_nid :: (conf: *lhash_st_CONF_VALUE, ctx: *X509V3_CTX, ext_nid: s32, value: *u8) -> *X509_extension_st #foreign libcrypto;
+
+X509V3_EXT_conf :: (conf: *lhash_st_CONF_VALUE, ctx: *X509V3_CTX, name: *u8, value: *u8) -> *X509_extension_st #foreign libcrypto;
+
+X509V3_set_nconf :: (ctx: *X509V3_CTX, conf: *CONF) -> void #foreign libcrypto;
+
+X509V3_set_ctx :: (ctx: *X509V3_CTX, issuer: *X509, subject: *X509, req: *X509_req_st, crl: *X509_crl_st, flags: s32) -> void #foreign libcrypto;
+
+i2s_ASN1_INTEGER :: (meth: *X509V3_EXT_METHOD, aint: *ASN1_INTEGER) -> *u8 #foreign libcrypto;
+s2i_ASN1_INTEGER :: (meth: *X509V3_EXT_METHOD, value: *u8) -> *ASN1_INTEGER #foreign libcrypto;
+i2s_ASN1_ENUMERATED :: (meth: *X509V3_EXT_METHOD, aint: *ASN1_ENUMERATED) -> *u8 #foreign libcrypto;
+i2s_ASN1_ENUMERATED_TABLE :: (meth: *X509V3_EXT_METHOD, aint: *ASN1_ENUMERATED) -> *u8 #foreign libcrypto;
+
+X509V3_EXT_get :: (ext: *X509_extension_st) -> *X509V3_EXT_METHOD #foreign libcrypto;
+X509V3_EXT_get_nid :: (nid: s32) -> *X509V3_EXT_METHOD #foreign libcrypto;
+X509V3_add_standard_extensions :: () -> s32 #foreign libcrypto;
+X509V3_parse_list :: (line: *u8) -> *stack_st_CONF_VALUE #foreign libcrypto;
+X509V3_EXT_d2i :: (ext: *X509_extension_st) -> *void #foreign libcrypto;
+X509V3_get_d2i :: (x: *stack_st_X509_EXTENSION, nid: s32, crit: *s32, idx: *s32) -> *void #foreign libcrypto;
+
+X509V3_EXT_i2d :: (ext_nid: s32, crit: s32, ext_struc: *void) -> *X509_extension_st #foreign libcrypto;
+X509V3_add1_i2d :: (x: **stack_st_X509_EXTENSION, nid: s32, value: *void, crit: s32, flags: u32) -> s32 #foreign libcrypto;
+
+hex_to_string :: (buffer: *u8, len: s32) -> *u8 #foreign libcrypto;
+string_to_hex :: (str: *u8, len: *s32) -> *u8 #foreign libcrypto;
+
+X509V3_EXT_val_prn :: (out: *BIO, val: *stack_st_CONF_VALUE, indent: s32, ml: s32) -> void #foreign libcrypto;
+
+X509V3_EXT_print :: (out: *BIO, ext: *X509_extension_st, flag: u32, indent: s32) -> s32 #foreign libcrypto;
+X509V3_EXT_print_fp :: (out: *FILE, ext: *X509_extension_st, flag: s32, indent: s32) -> s32 #foreign libcrypto;
+
+X509V3_extensions_print :: (out: *BIO, title: *u8, exts: *stack_st_X509_EXTENSION, flag: u32, indent: s32) -> s32 #foreign libcrypto;
+
+X509_check_ca :: (x: *X509) -> s32 #foreign libcrypto;
+X509_check_purpose :: (x: *X509, id: s32, ca: s32) -> s32 #foreign libcrypto;
+X509_supported_extension :: (ex: *X509_extension_st) -> s32 #foreign libcrypto;
+X509_check_issued :: (issuer: *X509, subject: *X509) -> s32 #foreign libcrypto;
+X509_check_akid :: (issuer: *X509, akid: *AUTHORITY_KEYID) -> s32 #foreign libcrypto;
+
+X509_PURPOSE_get_count :: () -> s32 #foreign libcrypto;
+X509_PURPOSE_get0 :: (idx: s32) -> *x509_purpose_st #foreign libcrypto;
+X509_PURPOSE_get_by_sname :: (sname: *u8) -> s32 #foreign libcrypto;
+X509_PURPOSE_get0_name :: (xp: *x509_purpose_st) -> *u8 #foreign libcrypto;
+X509_PURPOSE_get0_sname :: (xp: *x509_purpose_st) -> *u8 #foreign libcrypto;
+X509_PURPOSE_get_id :: (unknown0: *x509_purpose_st) -> s32 #foreign libcrypto;
+X509_get_extension_flags :: (x: *X509) -> u32 #foreign libcrypto;
+X509_get_key_usage :: (x: *X509) -> u32 #foreign libcrypto;
+X509_get_extended_key_usage :: (x: *X509) -> u32 #foreign libcrypto;
+
+X509_get1_email :: (x: *X509) -> *stack_st_OPENSSL_STRING #foreign libcrypto;
+X509_REQ_get1_email :: (x: *X509_req_st) -> *stack_st_OPENSSL_STRING #foreign libcrypto;
+X509_email_free :: (sk: *stack_st_OPENSSL_STRING) -> void #foreign libcrypto;
+X509_get1_ocsp :: (x: *X509) -> *stack_st_OPENSSL_STRING #foreign libcrypto;
+
+X509_check_host :: (x: *X509, chk: *u8, chklen: u64, flags: u32, peername: **u8) -> s32 #foreign libcrypto;
+
+X509_check_email :: (x: *X509, chk: *u8, chklen: u64, flags: u32) -> s32 #foreign libcrypto;
+
+X509_check_ip :: (x: *X509, chk: *u8, chklen: u64, flags: u32) -> s32 #foreign libcrypto;
+
+X509_check_ip_asc :: (x: *X509, ipasc: *u8, flags: u32) -> s32 #foreign libcrypto;
+
+a2i_IPADDRESS :: (ipasc: *u8) -> *ASN1_OCTET_STRING #foreign libcrypto;
+a2i_IPADDRESS_NC :: (ipasc: *u8) -> *ASN1_OCTET_STRING #foreign libcrypto;
+a2i_ipadd :: (ipout: *u8, ipasc: *u8) -> s32 #foreign libcrypto;
+X509V3_NAME_from_section :: (nm: *X509_name_st, dn_sk: *stack_st_CONF_VALUE, chtype: u32) -> s32 #foreign libcrypto;
+
+ASRange_st :: struct {
+    min: *ASN1_INTEGER;
+    max: *ASN1_INTEGER;
+}
+
+ASRange :: ASRange_st;
+
+ASIdOrRange_st :: struct {
+    type: s32;
+    u:    union {
+        id:    *ASN1_INTEGER;
+        range: *ASRange;
+    };
+}
+
+ASIdOrRange :: ASIdOrRange_st;
+
+stack_st_ASIdOrRange :: struct {}
+ASIdOrRanges :: stack_st_ASIdOrRange;
+
+ASIdentifierChoice_st :: struct {
+    type: s32;
+    u:    union {
+        inherit:       *ASN1_NULL;
+        asIdsOrRanges: *ASIdOrRanges;
+    };
+}
+
+ASIdentifierChoice :: ASIdentifierChoice_st;
+
+ASIdentifiers_st :: struct {
+    asnum: *ASIdentifierChoice;
+    rdi:   *ASIdentifierChoice;
+}
+
+ASIdentifiers :: ASIdentifiers_st;
+
+ASRange_new :: () -> *ASRange #foreign libcrypto;
+ASRange_free :: (a: *ASRange) -> void #foreign libcrypto;
+d2i_ASRange :: (a: **ASRange, in: **u8, len: s32) -> *ASRange #foreign libcrypto;
+i2d_ASRange :: (a: *ASRange, out: **u8) -> s32 #foreign libcrypto;
+ASRange_it: ASN1_ITEM #elsewhere libcrypto;
+
+ASIdOrRange_new :: () -> *ASIdOrRange #foreign libcrypto;
+ASIdOrRange_free :: (a: *ASIdOrRange) -> void #foreign libcrypto;
+d2i_ASIdOrRange :: (a: **ASIdOrRange, in: **u8, len: s32) -> *ASIdOrRange #foreign libcrypto;
+
+i2d_ASIdOrRange :: (a: *ASIdOrRange, out: **u8) -> s32 #foreign libcrypto;
+ASIdOrRange_it: ASN1_ITEM #elsewhere libcrypto;
+
+ASIdentifierChoice_new :: () -> *ASIdentifierChoice #foreign libcrypto;
+ASIdentifierChoice_free :: (a: *ASIdentifierChoice) -> void #foreign libcrypto;
+d2i_ASIdentifierChoice :: (a: **ASIdentifierChoice, in: **u8, len: s32) -> *ASIdentifierChoice #foreign libcrypto;
+
+i2d_ASIdentifierChoice :: (a: *ASIdentifierChoice, out: **u8) -> s32 #foreign libcrypto;
+ASIdentifierChoice_it: ASN1_ITEM #elsewhere libcrypto;
+
+ASIdentifiers_new :: () -> *ASIdentifiers #foreign libcrypto;
+ASIdentifiers_free :: (a: *ASIdentifiers) -> void #foreign libcrypto;
+d2i_ASIdentifiers :: (a: **ASIdentifiers, in: **u8, len: s32) -> *ASIdentifiers #foreign libcrypto;
+
+i2d_ASIdentifiers :: (a: *ASIdentifiers, out: **u8) -> s32 #foreign libcrypto;
+ASIdentifiers_it: ASN1_ITEM #elsewhere libcrypto;
+
+IPAddressRange_st :: struct {
+    min: *ASN1_BIT_STRING;
+    max: *ASN1_BIT_STRING;
+}
+
+IPAddressRange :: IPAddressRange_st;
+
+IPAddressOrRange_st :: struct {
+    type: s32;
+    u:    union {
+        addressPrefix: *ASN1_BIT_STRING;
+        addressRange:  *IPAddressRange;
+    };
+}
+
+IPAddressOrRange :: IPAddressOrRange_st;
+
+stack_st_IPAddressOrRange :: struct {}
+IPAddressOrRanges :: stack_st_IPAddressOrRange;
+
+IPAddressChoice_st :: struct {
+    type: s32;
+    u:    union {
+        inherit:           *ASN1_NULL;
+        addressesOrRanges: *IPAddressOrRanges;
+    };
+}
+
+IPAddressChoice :: IPAddressChoice_st;
+
+IPAddressFamily_st :: struct {
+    addressFamily:   *ASN1_OCTET_STRING;
+    ipAddressChoice: *IPAddressChoice;
+}
+
+IPAddressFamily :: IPAddressFamily_st;
+
+stack_st_IPAddressFamily :: struct {}
+IPAddrBlocks :: stack_st_IPAddressFamily;
+
+IPAddressRange_new :: () -> *IPAddressRange #foreign libcrypto;
+IPAddressRange_free :: (a: *IPAddressRange) -> void #foreign libcrypto;
+d2i_IPAddressRange :: (a: **IPAddressRange, in: **u8, len: s32) -> *IPAddressRange #foreign libcrypto;
+
+i2d_IPAddressRange :: (a: *IPAddressRange, out: **u8) -> s32 #foreign libcrypto;
+IPAddressRange_it: ASN1_ITEM #elsewhere libcrypto;
+
+IPAddressOrRange_new :: () -> *IPAddressOrRange #foreign libcrypto;
+IPAddressOrRange_free :: (a: *IPAddressOrRange) -> void #foreign libcrypto;
+d2i_IPAddressOrRange :: (a: **IPAddressOrRange, in: **u8, len: s32) -> *IPAddressOrRange #foreign libcrypto;
+
+i2d_IPAddressOrRange :: (a: *IPAddressOrRange, out: **u8) -> s32 #foreign libcrypto;
+IPAddressOrRange_it: ASN1_ITEM #elsewhere libcrypto;
+
+IPAddressChoice_new :: () -> *IPAddressChoice #foreign libcrypto;
+IPAddressChoice_free :: (a: *IPAddressChoice) -> void #foreign libcrypto;
+d2i_IPAddressChoice :: (a: **IPAddressChoice, in: **u8, len: s32) -> *IPAddressChoice #foreign libcrypto;
+
+i2d_IPAddressChoice :: (a: *IPAddressChoice, out: **u8) -> s32 #foreign libcrypto;
+IPAddressChoice_it: ASN1_ITEM #elsewhere libcrypto;
+
+IPAddressFamily_new :: () -> *IPAddressFamily #foreign libcrypto;
+IPAddressFamily_free :: (a: *IPAddressFamily) -> void #foreign libcrypto;
+d2i_IPAddressFamily :: (a: **IPAddressFamily, in: **u8, len: s32) -> *IPAddressFamily #foreign libcrypto;
+
+i2d_IPAddressFamily :: (a: *IPAddressFamily, out: **u8) -> s32 #foreign libcrypto;
+IPAddressFamily_it: ASN1_ITEM #elsewhere libcrypto;
+
+X509v3_asid_add_inherit :: (asid: *ASIdentifiers, which: s32) -> s32 #foreign libcrypto;
+X509v3_asid_add_id_or_range :: (asid: *ASIdentifiers, which: s32, min: *ASN1_INTEGER, max: *ASN1_INTEGER) -> s32 #foreign libcrypto;
+
+X509v3_addr_add_inherit :: (addr: *IPAddrBlocks, afi: u32, safi: *u32) -> s32 #foreign libcrypto;
+
+X509v3_addr_add_prefix :: (addr: *IPAddrBlocks, afi: u32, safi: *u32, a: *u8, prefixlen: s32) -> s32 #foreign libcrypto;
+
+X509v3_addr_add_range :: (addr: *IPAddrBlocks, afi: u32, safi: *u32, min: *u8, max: *u8) -> s32 #foreign libcrypto;
+
+X509v3_addr_get_afi :: (f: *IPAddressFamily) -> u32 #foreign libcrypto;
+X509v3_addr_get_range :: (aor: *IPAddressOrRange, afi: u32, min: *u8, max: *u8, length: s32) -> s32 #foreign libcrypto;
+
+X509v3_asid_is_canonical :: (asid: *ASIdentifiers) -> s32 #foreign libcrypto;
+X509v3_addr_is_canonical :: (addr: *IPAddrBlocks) -> s32 #foreign libcrypto;
+X509v3_asid_canonize :: (asid: *ASIdentifiers) -> s32 #foreign libcrypto;
+X509v3_addr_canonize :: (addr: *IPAddrBlocks) -> s32 #foreign libcrypto;
+
+X509v3_asid_inherits :: (asid: *ASIdentifiers) -> s32 #foreign libcrypto;
+X509v3_addr_inherits :: (addr: *IPAddrBlocks) -> s32 #foreign libcrypto;
+X509v3_asid_subset :: (a: *ASIdentifiers, b: *ASIdentifiers) -> s32 #foreign libcrypto;
+X509v3_addr_subset :: (a: *IPAddrBlocks, b: *IPAddrBlocks) -> s32 #foreign libcrypto;
+
+X509v3_asid_validate_path :: (unknown0: *x509_store_ctx_st) -> s32 #foreign libcrypto;
+X509v3_addr_validate_path :: (unknown0: *x509_store_ctx_st) -> s32 #foreign libcrypto;
+X509v3_asid_validate_resource_set :: (chain: *stack_st_X509, ext: *ASIdentifiers, allow_inheritance: s32) -> s32 #foreign libcrypto;
+
+X509v3_addr_validate_resource_set :: (chain: *stack_st_X509, ext: *IPAddrBlocks, allow_inheritance: s32) -> s32 #foreign libcrypto;
+
+ERR_load_X509V3_strings :: () -> void #foreign libcrypto;
 
 #scope_file
 
