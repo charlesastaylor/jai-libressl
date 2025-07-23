@@ -1,0 +1,6 @@
+.build
+src
+*_shared_build
+*_shared_install
+*_static_build
+*_static_install
